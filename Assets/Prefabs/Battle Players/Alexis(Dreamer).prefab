@@ -99,13 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   allAttacks: []
-  characterName: 
+  characterName: Dreamer
   currentHP: 0
   maxHP: 0
   currentMana: 0
   maxMana: 0
-  attackPower: 0
-  defensePower: 0
+  attack: 0
+  magDefense: 0
+  magAttack: 0
   dexterity: 0
   defense: 0
+  battleLevel: 0
   isDead: 0

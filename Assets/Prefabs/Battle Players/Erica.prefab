@@ -99,13 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   allAttacks: []
-  characterName: 
-  currentHP: 0
-  maxHP: 0
-  currentMana: 0
-  maxMana: 0
-  attackPower: 0
-  defensePower: 0
-  dexterity: 0
-  defense: 0
+  characterName: Erica
+  currentHP: 375
+  maxHP: 375
+  currentMana: 60
+  maxMana: 60
+  attack: 45
+  magDefense: 45
+  magAttack: 35
+  dexterity: 45
+  defense: 25
+  battleLevel: 3
   isDead: 0

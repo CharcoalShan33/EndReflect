@@ -99,13 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   allAttacks: []
-  characterName: 
-  currentHP: 0
-  maxHP: 0
-  currentMana: 0
-  maxMana: 0
-  attackPower: 0
-  defensePower: 0
-  dexterity: 0
-  defense: 0
+  characterName: Vulcan
+  currentHP: 395
+  maxHP: 395
+  currentMana: 90
+  maxMana: 90
+  attack: 25
+  magDefense: 60
+  magAttack: 70
+  dexterity: 30
+  defense: 40
+  battleLevel: 3
   isDead: 0

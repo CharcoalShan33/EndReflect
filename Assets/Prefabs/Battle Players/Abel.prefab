@@ -100,14 +100,14 @@ MonoBehaviour:
   isPlayer: 1
   allAttacks: []
   characterName: Abel
-  currentHP: 0
-  maxHP: 0
-  currentMana: 0
-  maxMana: 0
-  attack: 0
-  magDefense: 0
-  magAttack: 0
-  dexterity: 0
-  defense: 0
-  battleLevel: 0
+  currentHP: 450
+  maxHP: 450
+  currentMana: 55
+  maxMana: 55
+  attack: 70
+  magDefense: 45
+  magAttack: 45
+  dexterity: 30
+  defense: 50
+  battleLevel: 3
   isDead: 0

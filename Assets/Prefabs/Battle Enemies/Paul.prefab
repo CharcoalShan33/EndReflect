@@ -99,13 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   allAttacks: []
-  characterName: 
-  currentHP: 0
-  maxHP: 0
-  currentMana: 0
-  maxMana: 0
-  attackPower: 0
-  defensePower: 0
-  dexterity: 0
-  defense: 0
+  characterName: Paul
+  currentHP: 375
+  maxHP: 375
+  currentMana: 90
+  maxMana: 90
+  attack: 25
+  magDefense: 65
+  magAttack: 70
+  dexterity: 35
+  defense: 30
+  battleLevel: 3
   isDead: 0

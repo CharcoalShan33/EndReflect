@@ -99,13 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   allAttacks: []
-  characterName: 
-  currentHP: 0
-  maxHP: 0
-  currentMana: 0
-  maxMana: 0
-  attackPower: 0
-  defensePower: 0
-  dexterity: 0
-  defense: 0
+  characterName: Dominic
+  currentHP: 450
+  maxHP: 450
+  currentMana: 50
+  maxMana: 50
+  attack: 60
+  magDefense: 20
+  magAttack: 20
+  dexterity: 20
+  defense: 40
+  battleLevel: 3
   isDead: 0

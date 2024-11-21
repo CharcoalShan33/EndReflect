@@ -99,13 +99,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   allAttacks: []
-  characterName: 
-  currentHP: 0
-  maxHP: 0
-  currentMana: 0
-  maxMana: 0
-  attackPower: 0
-  defensePower: 0
-  dexterity: 0
-  defense: 0
+  characterName: Zephyr
+  currentHP: 400
+  maxHP: 400
+  currentMana: 50
+  maxMana: 50
+  attack: 70
+  magDefense: 20
+  magAttack: 30
+  dexterity: 24
+  defense: 40
+  battleLevel: 4
   isDead: 0

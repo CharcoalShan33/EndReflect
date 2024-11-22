@@ -15,10 +15,11 @@ public class PartyManager : MonoBehaviour
     [SerializeField] BattleCharacters[] battlers;
     [SerializeField] List<BattleCharacters> currentBattler;
 
+    [SerializeField] BattleCharacters defaultBattler;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetPartyByName(defaultBattler.characterName);
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class PartyManager : MonoBehaviour
         {
              if(battlers[i].characterName == memberName)
              {
-                BattleCharacters newCharacters = new();
+                BattleCharacters newCharacters = new BattleCharacters();
                 newCharacters.characterName = battlers[i].characterName;
                 newCharacters.currentHP = battlers[i].currentHP;
 

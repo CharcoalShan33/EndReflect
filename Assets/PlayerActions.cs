@@ -235,7 +235,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             ""id"": ""cacf0efa-4ca0-446a-ab8b-588b5086a04c"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Start Battle"",
                     ""type"": ""Button"",
                     ""id"": ""b74ea869-5299-4b14-b852-72f6df739f72"",
                     ""expectedControlType"": """",
@@ -248,11 +248,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""549b1b5c-20f9-42a0-b946-705e8cd4e41d"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Start Battle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -298,7 +298,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_MainPlayer_Attack = m_MainPlayer.FindAction("Attack", throwIfNotFound: true);
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
-        m_Battle_Newaction = m_Battle.FindAction("New action", throwIfNotFound: true);
+        m_Battle_StartBattle = m_Battle.FindAction("Start Battle", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -448,12 +448,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     // Battle
     private readonly InputActionMap m_Battle;
     private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
-    private readonly InputAction m_Battle_Newaction;
+    private readonly InputAction m_Battle_StartBattle;
     public struct BattleActions
     {
         private @PlayerActions m_Wrapper;
         public BattleActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Battle_Newaction;
+        public InputAction @StartBattle => m_Wrapper.m_Battle_StartBattle;
         public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -463,16 +463,16 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @StartBattle.started += instance.OnStartBattle;
+            @StartBattle.performed += instance.OnStartBattle;
+            @StartBattle.canceled += instance.OnStartBattle;
         }
 
         private void UnregisterCallbacks(IBattleActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @StartBattle.started -= instance.OnStartBattle;
+            @StartBattle.performed -= instance.OnStartBattle;
+            @StartBattle.canceled -= instance.OnStartBattle;
         }
 
         public void RemoveCallbacks(IBattleActions instance)
@@ -546,7 +546,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     }
     public interface IBattleActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnStartBattle(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

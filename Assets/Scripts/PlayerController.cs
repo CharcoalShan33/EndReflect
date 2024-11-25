@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using Unity.VisualScripting.ReorderableList;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
@@ -11,7 +10,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
+ public static PlayerController instance;
     private PlayerActions _playerInput;
 
     private Rigidbody2D rig;
@@ -23,25 +22,43 @@ public class PlayerController : MonoBehaviour
 
     private Animator _anim;
     private Vector2 movement;
-   
 
-
-
+    bool deactivateMove = false;
+  
+    [Header("Attacking")]
     [SerializeField] float attackRate;
-    private float lastAttack;
 
+    private float lastAttack;
     [SerializeField] float coolDown;
     private float lastBreak;
-    
+
+    [Header("Encounter")]
+
+    [SerializeField] int stepCounter;
+
+    bool moveInArea;
+
+
+
+
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
         rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
        
 
+        DontDestroyOnLoad(gameObject);
 
         
 
@@ -85,43 +102,63 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
-       
+        if(deactivateMove)
+        {
+            movement = Vector2.zero;
+        }
+        else
+        {
+            AllMovement();
+        }
+      
+    }
+
+    private void AllMovement()
+    {
         movement = _playerInput.MainPlayer.Movement.ReadValue<Vector2>();
-    //movement = _playerInput.Movement.Directional.ReadValue<Vector2>();
-      float hInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().x;
-      float yInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().y;
+        //movement = _playerInput.Movement.Directional.ReadValue<Vector2>();
+        float hInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().x;
+        float yInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().y;
 
         movement = new Vector2(hInput, yInput).normalized;
         _anim.SetFloat("moveX", movement.x);
         _anim.SetFloat("moveY", movement.y);
-       
-        if (hInput != 0|| yInput !=0)
+
+        if (hInput != 0 || yInput != 0)
         {
             _anim.SetFloat("lastX", hInput);
             _anim.SetFloat("lastY", yInput);
 
         }
-       
+
         if (isRunning)
         {
             _speed = multiplierSpeed * defaultSpeed;
             _anim.SetBool("isRunning", true);
         }
-        else if(!isRunning)
+        else if (!isRunning)
         {
             _speed = defaultSpeed;
             _anim.SetBool("isRunning", false);
         }
-     
     }
-    
+
     void FixedUpdate()
     {
         
         
         rig.velocity = movement *_speed * Time.fixedDeltaTime;
     }
+
+
+public bool DeactivateMovement(bool movement)
+    {
+        deactivateMove = movement;
+        return movement;
+    }
+
+
+
 
    
 }

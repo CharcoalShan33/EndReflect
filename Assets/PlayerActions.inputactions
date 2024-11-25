@@ -213,7 +213,7 @@
             "id": "cacf0efa-4ca0-446a-ab8b-588b5086a04c",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Start Battle",
                     "type": "Button",
                     "id": "b74ea869-5299-4b14-b852-72f6df739f72",
                     "expectedControlType": "",
@@ -226,11 +226,11 @@
                 {
                     "name": "",
                     "id": "549b1b5c-20f9-42a0-b946-705e8cd4e41d",
-                    "path": "",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Start Battle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

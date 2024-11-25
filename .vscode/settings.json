@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Endless_Reflection_2D.sln"
+    "dotnet.defaultSolution": "Endless_Reflection_2D.sln",
+    "dotnet.preferCSharpExtension": true
 }

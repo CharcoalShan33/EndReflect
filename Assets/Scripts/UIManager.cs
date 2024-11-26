@@ -10,11 +10,16 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     
 
+
     // Update is called once per frame
 
     void Start()
     {
-
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
     void Update()
     {

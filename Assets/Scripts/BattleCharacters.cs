@@ -14,6 +14,7 @@ public class BattleCharacters : MonoBehaviour
     public string characterName;
     public int currentHP, maxHP, currentMana, maxMana, attack, magDefense, magAttack, dexterity, defense, battleLevel;
     public bool isDead;
+    
 
     // Start is called before the first frame update
     void Start()

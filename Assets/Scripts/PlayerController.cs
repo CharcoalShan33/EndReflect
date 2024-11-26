@@ -23,26 +23,16 @@ public class PlayerController : MonoBehaviour
     private Animator _anim;
     private Vector2 movement;
 
+    float hInput;
+    float yInput;
+
     bool deactivateMove = false;
   
     [Header("Attacking")]
     [SerializeField] float attackRate;
 
     private float lastAttack;
-    [SerializeField] float coolDown;
-    private float lastBreak;
-
-    [Header("Encounter")]
-
-    [SerializeField] int stepCounter;
-
-    bool moveInArea;
-
-
-
-
-
-
+  
     // Start is called before the first frame update
     void Awake()
     {
@@ -81,7 +71,11 @@ public class PlayerController : MonoBehaviour
         _playerInput.MainPlayer.Run.canceled += ctx => isRunning = false;
         _playerInput.MainPlayer.Interaction.performed += OnInteract;
         _playerInput.MainPlayer.Attack.performed += OnAttack;
+       
     }
+
+    
+    
 
     private void OnAttack(InputAction.CallbackContext context)
     {
@@ -105,6 +99,8 @@ public class PlayerController : MonoBehaviour
         if(deactivateMove)
         {
             movement = Vector2.zero;
+            hInput = 0;
+            yInput = 0;
         }
         else
         {
@@ -117,8 +113,8 @@ public class PlayerController : MonoBehaviour
     {
         movement = _playerInput.MainPlayer.Movement.ReadValue<Vector2>();
         //movement = _playerInput.Movement.Directional.ReadValue<Vector2>();
-        float hInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().x;
-        float yInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().y;
+        hInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().x;
+         yInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().y;
 
         movement = new Vector2(hInput, yInput).normalized;
         _anim.SetFloat("moveX", movement.x);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameManager _instance;
+   
    public static GameManager Instance;
    public bool Active;
 
@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(_instance != null && _instance != this)
+        if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
         DontDestroyOnLoad(gameObject);
     }
@@ -26,6 +26,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Active == true)
+        {
+            PlayerController.instance.DeactivateMovement(true);
+        }
+        else
+        {
+            PlayerController.instance.DeactivateMovement(false);
+        }
     }
 }

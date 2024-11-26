@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,8 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
+  
     private bool isBattleActive;
-    public  int sceneNumber;
+    [SerializeField]  int sceneNumber;
+    [SerializeField] GameObject scene;
    [SerializeField] Transform[] playerPositions, enemyPositions;
 
     [SerializeField] BattleCharacters[] players, enemies;
@@ -23,6 +26,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
 
     {
+    
         DontDestroyOnLoad(gameObject);
     }
 
@@ -30,23 +34,33 @@ public class BattleManager : MonoBehaviour
 
     private void Update()
     {
-    if(Keyboard.current.bKey.isPressed)
-       {
-        StartBattle();
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            StartBattle();//new[]{"Dominic","Paul","Zena"});
+        }
         //StartBattle(new string[]{"Paul","Dominic","Zena"});
-       } 
+       
+    }
+   public void StartBattle()//string[] enemies)
+    {
+        
+     Preparing();
+        
+
     }
 
-   private void StartBattle()
+    private void Preparing()
     {
         if(!isBattleActive)
         {
-            isBattleActive = true;
-            GameManager.Instance.Active = true;
-            SceneManager.LoadScene(sceneNumber);
-            PlayerController.instance.gameObject.SetActive(false);
+        scene.SetActive(true);
+        isBattleActive = true;
+        GameManager.Instance.Active = true;
+        //Camera.main.transform.position = new Vector3(0f, 0f, -10f);
+        //transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
+        PlayerController.instance.gameObject.SetActive(false);
+        SceneManager.LoadScene(sceneNumber);
         }
 
     }
-
 }

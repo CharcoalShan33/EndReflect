@@ -6,16 +6,16 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set;}
+    public static UIManager Instance;
     // Start is called before the first frame update
-    
+
 
 
     // Update is called once per frame
 
     void Start()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -25,5 +25,5 @@ public class UIManager : MonoBehaviour
     {
 
     }
-   
+
 }

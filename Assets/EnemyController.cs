@@ -29,16 +29,16 @@ public class EnemyController : MonoBehaviour
         //transform. position = Vector2.MoveTowards(transform.position, player.transform.position, _enemySpeed * Time.deltaTime);
     }
     void Attack()
-    {  
-        if( Time.time - lastAttackTime > attackRate)
+    {
+        if (Time.time - lastAttackTime > attackRate)
         {
             lastAttackTime = Time.time;
             _anim.SetTrigger("ToHit");
         }
 
     }
-       
-    
 
-    
+
+
+
 }

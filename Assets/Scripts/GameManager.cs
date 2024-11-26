@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-   
-   public static GameManager Instance;
-   public bool Active;
 
-   
+    public static GameManager Instance;
+    public bool Active;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Active == true)
+        if (Active == true)
         {
             PlayerController.instance.DeactivateMovement(true);
         }

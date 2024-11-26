@@ -7,10 +7,11 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
- public static PlayerController instance;
+    public static PlayerController instance;
     private PlayerActions _playerInput;
 
     private Rigidbody2D rig;
@@ -18,21 +19,30 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] float _maxSpeed;
     float defaultSpeed = 90;
     [SerializeField] float multiplierSpeed = 1.5f;
-   [SerializeField] bool isRunning;
+    [SerializeField] bool isRunning;
 
+    [SerializeField]
+    Tilemap tileMap;
+
+    private Vector3 bottomLimit;
+    private Vector3 topLimit;
+    private Vector3 offset = new Vector3(.5f, .1f, 0f);
     private Animator _anim;
     private Vector2 movement;
 
     float hInput;
     float yInput;
 
+    bool isInBattle;
+
     bool deactivateMove = false;
-  
+
     [Header("Attacking")]
     [SerializeField] float attackRate;
 
     private float lastAttack;
-  
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,11 +56,11 @@ public class PlayerController : MonoBehaviour
         }
         rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
-       
+
 
         DontDestroyOnLoad(gameObject);
 
-        
+
 
     }
     void Start()
@@ -58,8 +68,9 @@ public class PlayerController : MonoBehaviour
         _playerInput = new();
         _playerInput.Enable();
         Setup();
-        
-        
+        bottomLimit = tileMap.localBounds.min + offset;
+        topLimit = tileMap.localBounds.max + -offset;
+       
     }
 
 
@@ -71,15 +82,15 @@ public class PlayerController : MonoBehaviour
         _playerInput.MainPlayer.Run.canceled += ctx => isRunning = false;
         _playerInput.MainPlayer.Interaction.performed += OnInteract;
         _playerInput.MainPlayer.Attack.performed += OnAttack;
-       
+
     }
 
-    
-    
+
+
 
     private void OnAttack(InputAction.CallbackContext context)
     {
-        if(Time.time - lastAttack > attackRate)
+        if (Time.time - lastAttack > attackRate)
         {
             lastAttack = Time.time;
             _anim.SetTrigger("ToHit");
@@ -96,7 +107,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(deactivateMove)
+        if (deactivateMove)
         {
             movement = Vector2.zero;
             hInput = 0;
@@ -106,16 +117,30 @@ public class PlayerController : MonoBehaviour
         {
             AllMovement();
         }
-      
+
+        if(isInBattle)
+        {
+            _anim.GetLayerName(1);
+        }
+        else
+        {
+            _anim.GetLayerName(0);
+        }
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,
+            bottomLimit.x, topLimit.x), Mathf.Clamp(transform.position.y, bottomLimit.y, topLimit.y),
+            transform.position.z);
+
     }
 
     private void AllMovement()
     {
-        movement = _playerInput.MainPlayer.Movement.ReadValue<Vector2>();
+        
         //movement = _playerInput.Movement.Directional.ReadValue<Vector2>();
+       
+        movement = _playerInput.MainPlayer.Movement.ReadValue<Vector2>();
         hInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().x;
-         yInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().y;
-
+        yInput = _playerInput.MainPlayer.Movement.ReadValue<Vector2>().y;
         movement = new Vector2(hInput, yInput).normalized;
         _anim.SetFloat("moveX", movement.x);
         _anim.SetFloat("moveY", movement.y);
@@ -141,20 +166,28 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        
-        rig.velocity = movement *_speed * Time.fixedDeltaTime;
+        // All movement here
+
+        rig.velocity = movement * _speed * Time.fixedDeltaTime;
     }
 
 
-public bool DeactivateMovement(bool movement)
+    public bool DeactivateMovement(bool movement)
     {
         deactivateMove = movement;
         return movement;
     }
 
 
+    public bool InBattle (bool battle)
+    {
+        isInBattle = battle;
+        return battle;
+    }
+     public void SetBounds(Vector3 bottomScreen, Vector3 topScreen)
+    {
+        bottomLimit = bottomScreen + offset;
+        topLimit = topScreen + -offset;
+    }
 
-
-   
 }

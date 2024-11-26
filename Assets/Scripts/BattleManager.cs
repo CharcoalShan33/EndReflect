@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-  
+
     private bool isBattleActive;
-    [SerializeField]  int sceneNumber;
+    [SerializeField] int sceneNumber;
     [SerializeField] GameObject scene;
-   [SerializeField] Transform[] playerPositions, enemyPositions;
+    [SerializeField] Transform[] playerPositions, enemyPositions;
 
     [SerializeField] BattleCharacters[] players, enemies;
 
@@ -26,7 +26,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
 
     {
-    
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -34,32 +34,32 @@ public class BattleManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             StartBattle();//new[]{"Dominic","Paul","Zena"});
         }
         //StartBattle(new string[]{"Paul","Dominic","Zena"});
-       
+
     }
-   public void StartBattle()//string[] enemies)
+    public void StartBattle()//string[] enemies)
     {
-        
-     Preparing();
-        
+
+        Preparing();
+
 
     }
 
     private void Preparing()
     {
-        if(!isBattleActive)
+        if (!isBattleActive)
         {
-        scene.SetActive(true);
-        isBattleActive = true;
-        GameManager.Instance.Active = true;
-        //Camera.main.transform.position = new Vector3(0f, 0f, -10f);
-        //transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
-        PlayerController.instance.gameObject.SetActive(false);
-        SceneManager.LoadScene(sceneNumber);
+            scene.SetActive(true);
+            isBattleActive = true;
+            GameManager.Instance.Active = true;
+            //Camera.main.transform.position = new Vector3(0f, 0f, -10f);
+            //transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
+            PlayerController.instance.gameObject.SetActive(false);
+            SceneManager.LoadScene(sceneNumber);
         }
 
     }

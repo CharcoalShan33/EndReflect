@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4142864230800221189}
   - component: {fileID: 3134353920378878894}
   - component: {fileID: 8247774610269642184}
+  - component: {fileID: -914325765087917939}
+  - component: {fileID: -2323683709973668776}
   m_Layer: 7
   m_Name: Paul
   m_TagString: Untagged
@@ -27,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4390827527708089652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.382097, y: 13.115571, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,15 +101,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   allAttacks: []
+  isFlipped: 0
   characterName: Paul
   currentHP: 375
   maxHP: 375
   currentMana: 90
   maxMana: 90
   attack: 25
-  magDefense: 65
-  magAttack: 70
+  magic: 80
   dexterity: 35
   defense: 30
   battleLevel: 3
+  speed: 15
   isDead: 0
+--- !u!95 &-914325765087917939
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390827527708089652}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &-2323683709973668776
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390827527708089652}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.3413427, y: -0.1137788}
+  m_Size: {x: 2.9215586, y: 6.1074233}
+  m_Direction: 0

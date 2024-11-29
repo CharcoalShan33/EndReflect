@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    // manage various items, menus, conditions/win or losing, player status
     public static GameManager Instance;
     public bool Active;
 
+    PlayerData[] players;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         DontDestroyOnLoad(gameObject);
+        players = FindObjectsOfType<PlayerData>();
     }
 
     // Update is called once per frame
@@ -34,5 +36,9 @@ public class GameManager : MonoBehaviour
         {
             PlayerController.instance.DeactivateMovement(false);
         }
+    }
+    public PlayerData[] GetPlayers()
+    {
+        return players;
     }
 }

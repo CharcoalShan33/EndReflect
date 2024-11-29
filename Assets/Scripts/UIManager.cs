@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     // Start is called before the first frame update
 
-
+    [SerializeField] Image fadeImage;
 
     // Update is called once per frame
 

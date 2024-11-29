@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: a2e7f4956b0e947f39f970166ad22d40
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a7fe73bca86d7448695229f31b74c394
+  - enabled: 1
     path: Assets/Scenes/Level-Dungeon.unity
     guid: 20087db37769a45a0ae270c257b52967
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: a7fe73bca86d7448695229f31b74c394
+    path: Assets/Scenes/Dungeon-UnderGround.unity
+    guid: a738b2f208a3f49fb9732cba33b59e56
+  - enabled: 1
+    path: Assets/Scenes/Shops.unity
+    guid: de261744ba1ab4f3dbc421a7e14b67de
   - enabled: 1
     path: Assets/Scenes/Battle Scene.unity
     guid: 89b59f45e8cd248b8bf201b6dd339b21

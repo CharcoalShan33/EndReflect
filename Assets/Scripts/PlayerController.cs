@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Profiling;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -17,12 +18,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rig;
     [SerializeField] float _speed;
     //[SerializeField] float _maxSpeed;
-    float defaultSpeed = 90;
+    float defaultSpeed = 105;
     [SerializeField] float multiplierSpeed = 1.5f;
     [SerializeField] bool isRunning;
 
-    [SerializeField]
-    Tilemap tileMap;
+ 
 
     private Vector3 bottomLimit;
     private Vector3 topLimit;
@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     bool isInBattle;
 
     bool deactivateMove = false;
+
+    public string sceneName;
 
     [Header("Attacking")]
     [SerializeField] float attackRate;
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
 
 
-        DontDestroyOnLoad(gameObject);
+       DontDestroyOnLoad(gameObject);
 
 
 
@@ -68,8 +70,7 @@ public class PlayerController : MonoBehaviour
         _playerInput = new();
         _playerInput.Enable();
         Setup();
-        bottomLimit = tileMap.localBounds.min + offset;
-        topLimit = tileMap.localBounds.max + -offset;
+       
        
     }
 

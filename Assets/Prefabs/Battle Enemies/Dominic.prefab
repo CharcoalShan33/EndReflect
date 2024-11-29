@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8867793083734683522}
   - component: {fileID: 4022233999645063962}
   - component: {fileID: 7993711085764900929}
+  - component: {fileID: -6109319465486922497}
+  - component: {fileID: -1610960732252297149}
   m_Layer: 7
   m_Name: Dominic
   m_TagString: Untagged
@@ -27,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4958829020557929527}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.720222, y: -14.915395, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,15 +101,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   allAttacks: []
+  isFlipped: 0
   characterName: Dominic
   currentHP: 450
   maxHP: 450
   currentMana: 50
   maxMana: 50
   attack: 60
-  magDefense: 20
-  magAttack: 20
+  magic: 40
   dexterity: 20
   defense: 40
   battleLevel: 3
+  speed: 10
   isDead: 0
+--- !u!95 &-6109319465486922497
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958829020557929527}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &-1610960732252297149
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958829020557929527}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.22156972, y: -0.13651167}
+  m_Size: {x: 2.7435517, y: 6.024944}
+  m_Direction: 0

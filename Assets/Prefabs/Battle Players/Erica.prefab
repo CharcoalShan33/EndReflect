@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 8482523936727529918}
   - component: {fileID: 4280004276578673252}
   - component: {fileID: -7295325220930524179}
-  - component: {fileID: -39790608789342084}
-  - component: {fileID: 3289766334577030329}
   m_Layer: 0
   m_Name: Erica
   m_TagString: Untagged
@@ -30,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7761400479686044751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.875757, y: 17.07649, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -102,17 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   allAttacks: []
+  isFlipped: 0
   characterName: Erica
   currentHP: 375
   maxHP: 375
   currentMana: 60
   maxMana: 60
   attack: 45
-  magDefense: 45
-  magAttack: 35
+  magic: 35
   dexterity: 45
   defense: 25
-  battleLevel: 3
+  battleLevel: 1
+  speed: 30
   isDead: 0
 --- !u!95 &-7295325220930524179
 Animator:
@@ -135,65 +134,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &-39790608789342084
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7761400479686044751}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &3289766334577030329
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7761400479686044751}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 17.1875, y: 17.1875}
-  m_Direction: 0

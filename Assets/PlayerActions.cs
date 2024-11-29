@@ -235,9 +235,36 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             ""id"": ""cacf0efa-4ca0-446a-ab8b-588b5086a04c"",
             ""actions"": [
                 {
-                    ""name"": ""Start Battle"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""b74ea869-5299-4b14-b852-72f6df739f72"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Magic"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c8b43d4-85aa-4173-84f6-65e164558534"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""08935b84-29f4-4f91-8726-eca1c94041c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use Items"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d3a05b1-8016-4aca-81fd-956bc767e3c0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -248,11 +275,44 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""549b1b5c-20f9-42a0-b946-705e8cd4e41d"",
-                    ""path"": ""<Keyboard>/b"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Start Battle"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e80b2906-f657-449e-a3b6-975c4f382148"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Magic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""118692eb-74ed-407e-afb3-f0ef074dc230"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a8387f6-caeb-4e42-8b95-6e555d6a3cc3"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use Items"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -287,7 +347,30 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Main Player
         m_MainPlayer = asset.FindActionMap("Main Player", throwIfNotFound: true);
@@ -298,7 +381,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_MainPlayer_Attack = m_MainPlayer.FindAction("Attack", throwIfNotFound: true);
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
-        m_Battle_StartBattle = m_Battle.FindAction("Start Battle", throwIfNotFound: true);
+        m_Battle_Attack = m_Battle.FindAction("Attack", throwIfNotFound: true);
+        m_Battle_Magic = m_Battle.FindAction("Magic", throwIfNotFound: true);
+        m_Battle_Cancel = m_Battle.FindAction("Cancel", throwIfNotFound: true);
+        m_Battle_UseItems = m_Battle.FindAction("Use Items", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -448,12 +534,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     // Battle
     private readonly InputActionMap m_Battle;
     private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
-    private readonly InputAction m_Battle_StartBattle;
+    private readonly InputAction m_Battle_Attack;
+    private readonly InputAction m_Battle_Magic;
+    private readonly InputAction m_Battle_Cancel;
+    private readonly InputAction m_Battle_UseItems;
     public struct BattleActions
     {
         private @PlayerActions m_Wrapper;
         public BattleActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @StartBattle => m_Wrapper.m_Battle_StartBattle;
+        public InputAction @Attack => m_Wrapper.m_Battle_Attack;
+        public InputAction @Magic => m_Wrapper.m_Battle_Magic;
+        public InputAction @Cancel => m_Wrapper.m_Battle_Cancel;
+        public InputAction @UseItems => m_Wrapper.m_Battle_UseItems;
         public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -463,16 +555,34 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
-            @StartBattle.started += instance.OnStartBattle;
-            @StartBattle.performed += instance.OnStartBattle;
-            @StartBattle.canceled += instance.OnStartBattle;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @Magic.started += instance.OnMagic;
+            @Magic.performed += instance.OnMagic;
+            @Magic.canceled += instance.OnMagic;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
+            @UseItems.started += instance.OnUseItems;
+            @UseItems.performed += instance.OnUseItems;
+            @UseItems.canceled += instance.OnUseItems;
         }
 
         private void UnregisterCallbacks(IBattleActions instance)
         {
-            @StartBattle.started -= instance.OnStartBattle;
-            @StartBattle.performed -= instance.OnStartBattle;
-            @StartBattle.canceled -= instance.OnStartBattle;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @Magic.started -= instance.OnMagic;
+            @Magic.performed -= instance.OnMagic;
+            @Magic.canceled -= instance.OnMagic;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
+            @UseItems.started -= instance.OnUseItems;
+            @UseItems.performed -= instance.OnUseItems;
+            @UseItems.canceled -= instance.OnUseItems;
         }
 
         public void RemoveCallbacks(IBattleActions instance)
@@ -536,6 +646,24 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
+    {
+        get
+        {
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
+        }
+    }
     public interface IMainPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -546,7 +674,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     }
     public interface IBattleActions
     {
-        void OnStartBattle(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnMagic(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnUseItems(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

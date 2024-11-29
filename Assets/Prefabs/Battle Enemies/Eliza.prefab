@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1699270553818991562}
   - component: {fileID: 2397768363093878235}
   - component: {fileID: 8099530634639536687}
+  - component: {fileID: -6548861355528439532}
+  - component: {fileID: 8065934987273659672}
   m_Layer: 7
   m_Name: Eliza
   m_TagString: Untagged
@@ -27,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 5189273084890428753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.224094, y: 3.4382143, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,15 +101,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   allAttacks: []
+  isFlipped: 0
   characterName: Eliza
   currentHP: 350
   maxHP: 350
   currentMana: 70
   maxMana: 70
   attack: 40
-  magDefense: 30
-  magAttack: 30
+  magic: 45
   dexterity: 40
   defense: 20
   battleLevel: 3
+  speed: 55
   isDead: 0
+--- !u!95 &-6548861355528439532
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189273084890428753}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &8065934987273659672
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5189273084890428753}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.20237122, y: -0.0031743732}
+  m_Size: {x: 3.0451982, y: 6.1743}
+  m_Direction: 0

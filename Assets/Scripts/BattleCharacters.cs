@@ -12,9 +12,10 @@ public class BattleCharacters : MonoBehaviour
     [SerializeField] bool isPlayer;
     [SerializeField] string[] allAttacks;
 
+    [SerializeField] bool isFlipped;
 
-   [SerializeField] string characterName;
-    [SerializeField] int currentHP, maxHP, currentMana, maxMana, attack, magDefense, magAttack, dexterity, defense, battleLevel;
+   public string characterName;
+    public int currentHP, maxHP, currentMana, maxMana, attack, magic, dexterity, defense, battleLevel, speed;
    [SerializeField] bool isDead;
     SpriteRenderer spr;
 
@@ -36,6 +37,17 @@ public class BattleCharacters : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+   public bool IsPlayer()
+   {
+    return isPlayer;
+   }
+   
+   public int SetInitiative(int character)
+   {
+    speed = character;
+    return character;
+   }
+  
 }

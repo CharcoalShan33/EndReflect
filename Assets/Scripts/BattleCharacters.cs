@@ -49,5 +49,11 @@ public class BattleCharacters : MonoBehaviour
     speed = character;
     return character;
    }
+   private void AttackAction()
+   {
+
+   }
+
+   /// animations: hit, death, attack
   
 }

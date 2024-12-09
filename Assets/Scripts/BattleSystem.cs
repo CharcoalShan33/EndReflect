@@ -15,16 +15,21 @@ using UnityEngine.U2D.IK;
 
 public class BattleSystem : MonoBehaviour
 {
-/// <summary>
-/// PartyMemberInfo = PlayerStats 
-//EnemyInfo = BattleInfo for Enemies
-////PartyMember = uses Playerstats;
+    /// <summary>
+    /// PartyMemberInfo = PlayerStats 
+    //EnemyInfo = BattleInfo for Enemies
+    ////PartyMember = uses Playerstats;
+    //EnemyMember = uses enemyStats;
+    //BattleEntities = BattleCharacter
 
-//EnemyMember = uses enemyStats;
-//BattleEntities = BattleCharacter
+    /// </summary>
+    /// 
 
-
-/// </summary>
+    [SerializeField] private enum BattleStates {Start, Selection, Battle, Won, Lost, Run, Using} 
+    // idle is for selection, busy for animation
+    // Using is for items after selection - take a turn
+    [Header("Battle")]
+    [Serialize] BattleStates battleState;
     private bool isBattleActive;
     [SerializeField] int sceneNumber;
     [SerializeField] GameObject scene;
@@ -32,43 +37,37 @@ public class BattleSystem : MonoBehaviour
 
     //[SerializeField] BattleCharacters[] players, enemies;
 
-    
+
     [SerializeField] List<BattleCharacters> activeCharacters;
     [SerializeField] List<BattleCharacters> playerCharacters;
-     [SerializeField] List<BattleCharacters> enemyCharacters;
+    [SerializeField] List<BattleCharacters> enemyCharacters;
 
     //[SerializeField] BattleCharacters defaultPlayer;
     [Header("UI")]
 
     [SerializeField]
     GameObject[] enemyTargetButtons;
-    [SerializeField]GameObject battleUI, actionMenu, magicMenu, enemySelectionMenu;
-    [SerializeField] TextMeshProUGUI actionLabelText , nameText; //Character nameText;
+    [SerializeField] GameObject battleUI, actionMenu, magicMenu, enemySelectionMenu;
+    [SerializeField] TextMeshProUGUI actionLabelText, nameText; //Character nameText;
 
-//For each enemy and Player Active Character
-    [SerializeField] TextMeshProUGUI hpPlayerInformation1, hpPlayerInformation2, hpEnemyInformation1, hpEnemyInformation2;
-    [SerializeField] private Slider hpPlayerSlider,hpEnemySlider;
-    
-    
+    //For each enemy and Player Active Character
+    [SerializeField] TextMeshProUGUI hpPlayerInformation1, hpPlayerInformation2, hpEnemyInformation1, hpEnemyInformation2; // at the top
+    [SerializeField] private Slider hpPlayerSlider, hpEnemySlider; // at the top
+
+    [SerializeField] Button actionButton, magicButton, useButton;
 
     [SerializeField] int currentTurn;
     [SerializeField] bool waitingForTurn;
-
-    private int currentPlayer;
 
     // Start is called before the first frame update
 
     private void Start()
 
-    { 
-        
-     
+    {
         scene.SetActive(false);
         battleUI.SetActive(false);
-        
-         DetermineOrder();
+        DetermineOrder();
 
-      
     }
 
     // Update is called once per frame
@@ -77,95 +76,102 @@ public class BattleSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            StartBattle(new string[]{"Dominic","Paul","Zena","Eliza","Zephyr"});
-            
+            StartBattle(new string[] { "Dominic", "Paul", "Zena", "Eliza", "Zephyr" });
+
         }
-        if(Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             NextTurn();
         }
-      
-       if(isBattleActive)
-       {
-        if(waitingForTurn)
+
+        if (isBattleActive)
         {
-            if(activeCharacters[currentPlayer].IsPlayer())
+            
+            if (waitingForTurn)
             {
                 
-                battleUI.SetActive(true);
-            }
-            else
-            {
-                battleUI.SetActive(false);
+                if (activeCharacters[currentTurn].IsPlayer())
+                {
+
+                    battleUI.SetActive(true);
+                    
+                    
+                }
+                else
+                {   
+                   battleUI.SetActive(false);
+                    
+                }
+                
             }
         }
-       }
-
+        UpdateHealthBars();
     }
     public void StartBattle(string[] enemies)
     {
-      
+
         Preparing();
-       AddPlayers();
-       AddEnemies(enemies);
-       
-       waitingForTurn = true;
-       currentTurn = 0;
-       
+        AddPlayers();
+        AddEnemies(enemies);
+
+        waitingForTurn = true;
+        currentTurn = 0;
+        /// battle order
+
 
     }
 
- 
+
     private void AddPlayers()
     {
-         for (int i = 0; i < GameManager.Instance.GetPlayers().Length; i++)
+        for (int i = 0; i < GameManager.Instance.GetPlayers().Length; i++)
         {
-           if(GameManager.Instance.GetPlayers()[i].gameObject.activeInHierarchy)
+            if (GameManager.Instance.GetPlayers()[i].gameObject.activeInHierarchy)
             {
-                for (int j = 0; j < playerCharacters.Count ; j++)
+                for (int j = 0; j < playerCharacters.Count; j++)
                 {
                     if (playerCharacters[j].characterName == GameManager.Instance.GetPlayers()[i].playerName)
                     {
                         BattleCharacters newPlayer = Instantiate(playerCharacters[j], playerPositions[i].position, playerPositions[i].rotation);
                         activeCharacters.Add(newPlayer);
-                     
-                    PlayerData player = GameManager.Instance.GetPlayers()[i];
-                    activeCharacters[i].currentHP = player.currentHP;
-                    activeCharacters[i].currentMana = player.currentMP;
-                    activeCharacters[i].maxHP = player.maxHP;
-                    activeCharacters[i].maxMana = player.MaxMP;
-                    activeCharacters[i].attack = player.attack;
-                    activeCharacters[i].defense = player.defense;
-                    activeCharacters[i].speed = player.speed;
-                    activeCharacters[i].dexterity = player.dexterity;
-                    activeCharacters[i].magic = player.magic;
-                
+
+                        PlayerData player = GameManager.Instance.GetPlayers()[i];
+                        activeCharacters[i].currentHP = player.currentHP;
+                        activeCharacters[i].currentMana = player.currentMP;
+                        activeCharacters[i].maxHP = player.maxHP;
+                        activeCharacters[i].maxMana = player.MaxMP;
+                        activeCharacters[i].attack = player.attack;
+                        activeCharacters[i].defense = player.defense;
+                        activeCharacters[i].speed = player.speed;
+                        activeCharacters[i].dexterity = player.dexterity;
+                        activeCharacters[i].magic = player.magic;
+
 
                     }
                 }
-             }
-            
+            }
+
         }
     }
 
     private void AddEnemies(string[] enemiesToSpawn)
     {
-       for (int i = 0; i < enemyCharacters.Count; i++)
+        for (int i = 0; i < enemyCharacters.Count; i++)
         {
             if (enemiesToSpawn[i] != "")
             {
-                if(enemyCharacters[i].gameObject.activeInHierarchy)
+                if (enemyCharacters[i].gameObject.activeInHierarchy)
                 {
-                for (int j = 0; j < enemyCharacters.Count; j++)
-                {
-                    if (enemyCharacters[j].characterName == enemiesToSpawn[i])
+                    for (int j = 0; j < enemyCharacters.Count; j++)
                     {
+                        if (enemyCharacters[j].characterName == enemiesToSpawn[i])
+                        {
 
-                        BattleCharacters newEnemy = Instantiate(enemyCharacters[j], enemyPositions[i].position, enemyPositions[i].rotation);
-                        activeCharacters.Add(newEnemy);
+                            BattleCharacters newEnemy = Instantiate(enemyCharacters[j], enemyPositions[i].position, enemyPositions[i].rotation);
+                            activeCharacters.Add(newEnemy);
 
+                        }
                     }
-                }
                 }
             }
         }
@@ -175,10 +181,10 @@ public class BattleSystem : MonoBehaviour
     {
         if (!isBattleActive)
         {
-           scene.SetActive(true);
+            scene.SetActive(true);
             isBattleActive = true;
             GameManager.Instance.Active = true;
-        
+
             //Camera.main.transform.position = new Vector3(0f, 0f, -10f);
             //transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
             PlayerController.instance.gameObject.SetActive(false);
@@ -190,7 +196,7 @@ public class BattleSystem : MonoBehaviour
     void NextTurn()
     {
         currentTurn++;
-        if(currentTurn >= activeCharacters.Count)
+        if (currentTurn >= activeCharacters.Count)
         {
             currentTurn = 0;
         }
@@ -205,38 +211,65 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    public void SetValues(int healith, int maxHealth, int speed)
+    private IEnumerator BattleLoop()
     {
-         for(int i = 0; i < playerCharacters.Count; i++)
+        yield return null;
+        enemySelectionMenu.SetActive(false);
+        battleState = BattleStates.Battle;
+        // popup
         
-            playerCharacters[0].currentHP = healith;
-            playerCharacters[0].maxHP = maxHealth;
-            hpPlayerInformation1.text = playerCharacters[0].currentHP.ToString();
-            hpPlayerInformation2.text = playerCharacters[0].maxHP.ToString();
 
-            UpdateHealthBars();
-        
+        for(int i = 0; i < activeCharacters.Count; i++)
+        {
+           
+        }
     }
+
+/*
+    public void SetValues(int health, int maxHealth)// information panel
+    {
+        for (int i = 0; i < activeCharacters.Count; i++)
+            if (activeCharacters[i].IsPlayer() == true)
+            {
+                playerCharacters[currentTurn].currentHP = health;
+                playerCharacters[currentTurn].maxHP = maxHealth;
+                hpPlayerInformation1.text = playerCharacters[currentTurn].currentHP.ToString();
+                hpPlayerInformation2.text = playerCharacters[currentTurn].maxHP.ToString();
+            }
+            else
+            {
+                enemyCharacters[currentTurn].currentHP = health;
+                enemyCharacters[currentTurn].maxHP = maxHealth;
+                hpEnemyInformation1.text = enemyCharacters[currentTurn].currentHP.ToString();
+                hpEnemyInformation2.text = enemyCharacters[currentTurn].maxHP.ToString();
+            }
+        UpdateHealthBars();
+
+    }
+    */
     private void UpdateHealthBars()
     {
-        //foreach 
-        hpPlayerSlider.maxValue = playerCharacters[0].maxHP;
-        hpPlayerInformation1.text = playerCharacters[0].currentHP.ToString();
-        hpPlayerSlider.value = playerCharacters[0].currentHP;
+       
+        
     }
 
-   public void ShowBattleMenu() // for active characters
-   {
-    actionLabelText.text = activeCharacters[currentPlayer].name;
-    actionMenu.SetActive(true);
-   }
-   public void ShowMagicMenu()
-   {
-     magicMenu.SetActive(true);
-   }
-
-    public void ShowTargetMenu()
+    public void ShowBattleMenu() // for active characters
     {
+        for (int i = 0; i < playerCharacters.Count; i++)
+        {
+            actionLabelText.text = activeCharacters[currentTurn].name;
+            actionMenu.SetActive(true);
+        }
+
+    }
+    public void ShowMagicSelectionMenu() // magic button.. seperate function for spells
+    {
+        magicMenu.SetActive(true);
+    }
+
+    public void ShowTargetMenu() // for any targeting buttons
+    {
+        //if()
         actionMenu.SetActive(false);
         magicMenu.SetActive(false);
         SetEnemySelection();
@@ -245,12 +278,12 @@ public class BattleSystem : MonoBehaviour
 
     private void SetEnemySelection()
     {
-        for(int i = 0; i < enemyTargetButtons.Length; i++)
+        for (int i = 0; i < enemyTargetButtons.Length; i++)
         {
             enemyTargetButtons[i].SetActive(false);
-            
+
         }
-        for(int j = 0; j< enemyCharacters.Count; j++)
+        for (int j = 0; j < enemyCharacters.Count; j++)
         {
             enemyTargetButtons[j].SetActive(true);
             enemyTargetButtons[j].GetComponentInChildren<TextMeshProUGUI>().text = enemyCharacters[j].characterName;
@@ -258,14 +291,29 @@ public class BattleSystem : MonoBehaviour
     }
     //// show mana cost and ability name for each available characters. Enemies too.
 
+
+    private void SetSpellSelection()
+    {
+        for (int i = 0; i < enemyTargetButtons.Length; i++) /// spellAttackButtons
+        {
+            //spell buttons[].SetActive(false);
+            //enemyTargetButtons[i].SetActive(false);
+
+        }
+        for (int j = 0; j < enemyCharacters.Count; j++)
+        {
+            enemyTargetButtons[j].SetActive(true); //spell buttons
+            enemyTargetButtons[j].GetComponentInChildren<TextMeshProUGUI>().text = enemyCharacters[j].characterName; // spell name
+        }
+    }
     private void DetermineOrder()
     {
-       
-     
-     activeCharacters.Sort((c1,c2) => -c1.speed.CompareTo(c2.speed));
-    //activeCharacters.Sort((c1,c2) => -c1.SetInitiative().CompareTo(c2.SetInitiative(activeCharacters[activeCharacters.Count].speed)));
+
+
+        activeCharacters.Sort((c1, c2) => -c1.speed.CompareTo(c2.speed));
+        //activeCharacters.Sort((c1,c2) => -c1.SetInitiative().CompareTo(c2.SetInitiative(activeCharacters[activeCharacters.Count].speed)));
     }
 
-    
+   
 
 }

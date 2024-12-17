@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float multiplierSpeed = 1.5f;
     [SerializeField] bool isRunning;
 
+    [SerializeField] List<GameObject> allPlayers;
+    
  
 
     private Vector3 bottomLimit;
@@ -56,17 +58,18 @@ public class PlayerController : MonoBehaviour
         {
             instance = this;
         }
-        rig = GetComponent<Rigidbody2D>();
-        _anim = GetComponent<Animator>();
-
-
-       DontDestroyOnLoad(gameObject);
-
+       
 
 
     }
     void Start()
     {
+         rig = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
+
+
+       DontDestroyOnLoad(gameObject);
+
         _playerInput = new();
         _playerInput.Enable();
         Setup();

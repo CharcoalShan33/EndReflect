@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1804158666039845140}
   - component: {fileID: 4370675383483704281}
-  - component: {fileID: 2302558031550552216}
   - component: {fileID: -8142337474991835963}
   m_Layer: 0
   m_Name: Abel
@@ -86,33 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2302558031550552216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8207606392874977040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416784b6310df44989608d8dbf49f472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 1
-  allAttacks: []
-  isFlipped: 0
-  characterName: Abel
-  currentHP: 450
-  maxHP: 450
-  currentMana: 55
-  maxMana: 55
-  attack: 70
-  magic: 25
-  dexterity: 50
-  defense: 50
-  battleLevel: 3
-  speed: 40
-  isDead: 0
 --- !u!95 &-8142337474991835963
 Animator:
   serializedVersion: 5

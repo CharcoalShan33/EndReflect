@@ -21,8 +21,8 @@ TagManager:
   - P.Effects
   - E.Effects
   - Walls
-  - 
-  - 
+  - Destructibles
+  - Interactables
   - 
   - 
   - 

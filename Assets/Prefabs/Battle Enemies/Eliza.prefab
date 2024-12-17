@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1699270553818991562}
   - component: {fileID: 2397768363093878235}
-  - component: {fileID: 8099530634639536687}
   - component: {fileID: -6548861355528439532}
   - component: {fileID: 8065934987273659672}
   m_Layer: 7
@@ -87,33 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8099530634639536687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5189273084890428753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416784b6310df44989608d8dbf49f472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 0
-  allAttacks: []
-  isFlipped: 0
-  characterName: Eliza
-  currentHP: 350
-  maxHP: 350
-  currentMana: 70
-  maxMana: 70
-  attack: 40
-  magic: 45
-  dexterity: 40
-  defense: 20
-  battleLevel: 3
-  speed: 55
-  isDead: 0
 --- !u!95 &-6548861355528439532
 Animator:
   serializedVersion: 5

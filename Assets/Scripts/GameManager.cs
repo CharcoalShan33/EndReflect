@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
 
     PlayerData[] players;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -21,6 +20,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
         DontDestroyOnLoad(gameObject);
         players = FindObjectsOfType<PlayerData>();
     }

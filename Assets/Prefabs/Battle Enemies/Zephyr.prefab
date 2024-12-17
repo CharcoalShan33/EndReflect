@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3062137499159386830}
   - component: {fileID: 2694349317516235342}
-  - component: {fileID: 1067948722958642314}
   - component: {fileID: 9027146065762861488}
   - component: {fileID: 6370883641401182969}
   m_Layer: 7
@@ -87,33 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1067948722958642314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8964257914001894276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416784b6310df44989608d8dbf49f472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 0
-  allAttacks: []
-  isFlipped: 0
-  characterName: Zephyr
-  currentHP: 400
-  maxHP: 400
-  currentMana: 50
-  maxMana: 50
-  attack: 70
-  magic: 35
-  dexterity: 24
-  defense: 40
-  battleLevel: 4
-  speed: 45
-  isDead: 0
 --- !u!95 &9027146065762861488
 Animator:
   serializedVersion: 5

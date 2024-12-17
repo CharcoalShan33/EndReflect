@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1318907630212560694}
   - component: {fileID: 2547462731413808348}
-  - component: {fileID: 1105924945960007867}
   - component: {fileID: 7734742358282861922}
   - component: {fileID: 3607151024217757801}
   m_Layer: 7
@@ -87,33 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1105924945960007867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6854846045398421781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416784b6310df44989608d8dbf49f472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 0
-  allAttacks: []
-  isFlipped: 0
-  characterName: Zena
-  currentHP: 375
-  maxHP: 375
-  currentMana: 70
-  maxMana: 70
-  attack: 60
-  magic: 80
-  dexterity: 27
-  defense: 30
-  battleLevel: 3
-  speed: 35
-  isDead: 0
 --- !u!95 &7734742358282861922
 Animator:
   serializedVersion: 5

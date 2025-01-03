@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // manage various items, menus, conditions/win or losing, player status
+    // manage various items, menus(open/closing, updating), conditions/win or losing, player status
     public static GameManager Instance;
-    public bool Active;
+    static bool Active;
 
-    PlayerData[] players;
+    CharacterStats[] players;
+    BattleStats[] battleData;
+
+    //static float enemyStatsMultiplier; // for Battle
+    //static float enemyBattleLevelStats// for battle
+
+    static bool didWin;
+   
+
+    //[SerializeField] GameObject HUD, shopMenu, craftMenu, inventoryMenu;
+    // public Enum Difficulty { Easy, Medium, Hard, };
+    // private Difficulty currentDifficulty
+    //enum for rarity
+    // private int currentSanity // battle boost, rarer drops
 
     void Awake()
     {
@@ -27,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         
         DontDestroyOnLoad(gameObject);
-        players = FindObjectsOfType<PlayerData>();
+        players = FindObjectsOfType<CharacterStats>();
     }
 
     // Update is called once per frame
@@ -35,15 +48,45 @@ public class GameManager : MonoBehaviour
     {
         if (Active == true)
         {
-            PlayerController.instance.DeactivateMovement(true);
+           // PlayerController.instance.DeactivateMovement(true);
         }
         else
         {
-            PlayerController.instance.DeactivateMovement(false);
+            //PlayerController.instance.DeactivateMovement(false);
         }
+        //switch(currentDifficulty)
     }
-    public PlayerData[] GetPlayers()
+    public CharacterStats[] GetPlayers()
     {
         return players;
     }
+
+    public bool WinLose(bool choice)
+    {
+        didWin = choice;
+        if(didWin)
+        {
+            //gain Friendship
+            //gain Sanity Meter
+
+
+        }
+        else
+        {
+        //decrease sanity meter
+        // restore healt to one
+        //  if sanity meter is zero and player is dead
+        // GameOver
+        }
+        return choice;
+    }
+     void GameOver()
+    {
+        // show gameover screen
+        // go back to main menu
+        // possibly hit continue
+
+    }
+
+    
 }

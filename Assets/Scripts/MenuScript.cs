@@ -6,6 +6,7 @@ using UnityEditor;
 
 public class MenuScript : MonoBehaviour
 {
+    //[SerializeField] bool haveSaveFile;
     //[SerializeField] GameObject continueButton;
     // Start is called before the first frame update
 
@@ -27,6 +28,15 @@ public class MenuScript : MonoBehaviour
         }
 
     }
+    public void Continue()
+    {
+
+    }
+
+    public void Options()
+    {
+        
+    }
     public void Credits(int index)
     {
 
@@ -37,9 +47,7 @@ public class MenuScript : MonoBehaviour
     }
     public void BackButton(int index)
     {
-
-
-
+        
         SceneManager.LoadScene(index);
 
 

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab092ffbe14e4017a6ed76a98ef4868, type: 3}
+  m_Name: Zena 1
+  m_EditorClassIdentifier: 
+  Name: Zena
+  maxHP: 376
+  HP: 376
+  MP: 90
+  maxMP: 90
+  ATK: 35
+  DEF: 65
+  INT: 65
+  RES: 45
+  SPD: 30
+  LVL: 1
+  isPlayer: 0
+  isDead: 0

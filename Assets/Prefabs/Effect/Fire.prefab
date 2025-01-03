@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7601047287657401269}
   - component: {fileID: 5806868371531075744}
   - component: {fileID: 412507029898116692}
+  - component: {fileID: 2627647439749437319}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -106,3 +107,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2627647439749437319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586794585072927183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0cfe80341d140b3bc6290dd3886708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: Fire
+  power: 10
+  mpCost: 10
+  isFlipped: 0
+  currentSpellType: 0
+  speed: 1

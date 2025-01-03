@@ -124,3 +124,4 @@ MonoBehaviour:
   mpCost: 15
   isFlipped: 0
   currentSpellType: 0
+  speed: 1

@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5057887979942952116}
-  - component: {fileID: 4550018454283644295}
-  - component: {fileID: 1358557805511632493}
   - component: {fileID: 5014369928901001361}
   - component: {fileID: 5562806281679837554}
-  - component: {fileID: -7934384937109232355}
+  - component: {fileID: 1800348100561860560}
+  - component: {fileID: 7197797370571042944}
+  - component: {fileID: -8376339180277488433}
   m_Layer: 6
   m_Name: Abel
   m_TagString: Player
@@ -36,68 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &4550018454283644295
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174189659394345188}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.04707541, y: -0.21184105}
-  m_Size: {x: 3.3245509, y: 9.426575}
-  m_Direction: 0
---- !u!50 &1358557805511632493
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174189659394345188}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!212 &5014369928901001361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -136,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 506302737
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6948a6559e4924b78acdd91a5d737f6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -160,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 2174189659394345188}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 067f7255e7f23487381802533d8c8744, type: 2}
+  m_Controller: {fileID: 9100000, guid: 68d58cd34216548b1b40126ea96dd349, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -171,7 +109,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7934384937109232355
+--- !u!114 &1800348100561860560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,20 +118,94 @@ MonoBehaviour:
   m_GameObject: {fileID: 2174189659394345188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d179cdf7f27404742a31395a14f5be51, type: 3}
+  m_Script: {fileID: 11500000, guid: cebd526d05d854b1c9a54471270269ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Abel
-  characterImage: {fileID: 21300000, guid: 6948a6559e4924b78acdd91a5d737f6e, type: 3}
-  playerLevel: 1
-  currentXP: 0
-  xpForNextLevel: 
-  maxHP: 450
-  currentHP: 450
-  currentMP: 60
-  MaxMP: 60
-  defense: 50
-  attack: 70
-  magic: 30
-  speed: 45
-  dexterity: 40
+  play:
+    playerName: 
+    characterImage: {fileID: 0}
+    playerLevel: 1
+    currentXP: 0
+    expToNextLevel: 
+    currentHP: 1
+    maxHP: 0
+    currentMP: 0
+    MaxMP: 0
+    attack: 0
+    defense: 0
+    magic: 0
+    magicDefense: 0
+    speed: 0
+    weaponPower: 0
+    armorPower: 0
+    friendship: 0
+    sanity: 0
+    maxSanity: 0
+  characterData: {fileID: 11400000, guid: 80ffa09d4627c4b9dae8eb0eddae6f6c, type: 2}
+  _speed: 90
+  multiplierSpeed: 1.5
+  isRunning: 0
+  sceneName: 
+  attackRate: 1
+--- !u!70 &7197797370571042944
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174189659394345188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0000010217939, y: -0.052670073}
+  m_Size: {x: 3.4932702, y: 9.91903}
+  m_Direction: 0
+--- !u!50 &-8376339180277488433
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174189659394345188}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

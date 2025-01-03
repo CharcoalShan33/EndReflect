@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4881133472136749727}
   - component: {fileID: 6727898823938865440}
   - component: {fileID: -4257891918167355941}
+  - component: {fileID: 5723984344053938848}
   m_Layer: 0
   m_Name: Vulcan
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 331399898330842314}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf670ac2c43f1409ca28f3bc618b0bc9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -106,3 +107,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5723984344053938848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331399898330842314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54bf8f5912b4f4d659381de4f191f4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 1909d054ad8ce43a381f1234b2679c66, type: 2}
+  baseHero:
+    name: 
+    maxHP: 0
+    HP: 1
+    MP: 0
+    maxMP: 0
+    ATK: 0
+    DEF: 0
+    INT: 0
+    RES: 0
+    SPD: 0
+    LVL: 1
+    isPlayer: 0
+    isDead: 0
+    weaponAmount: 0
+    armorAmount: 0
+  battleState: 0
+  moveSpeed: 0
+  defaultSpeed: 10

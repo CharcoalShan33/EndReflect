@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5057887979942952116}
-  - component: {fileID: 1929843047674332563}
   - component: {fileID: 4561735672872260397}
   - component: {fileID: 4550018454283644295}
   - component: {fileID: 1358557805511632493}
   - component: {fileID: 6100978688377038989}
-  - component: {fileID: 6419830216898857974}
+  - component: {fileID: 9031841074352715111}
   m_Layer: 6
   m_Name: Yvette
   m_TagString: Player
@@ -37,23 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1929843047674332563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174189659394345188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8118ee4b6f279476188a0b21edb45d40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 80
-  multiplierSpeed: 1.5
-  isRunning: 0
-  sceneName: 
-  attackRate: 0
 --- !u!95 &4561735672872260397
 Animator:
   serializedVersion: 5
@@ -64,7 +46,7 @@ Animator:
   m_GameObject: {fileID: 2174189659394345188}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 067f7255e7f23487381802533d8c8744, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -107,8 +89,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0.02438392, y: -0.19507545}
+  m_Size: {x: 3.1822624, y: 8.900468}
   m_Direction: 0
 --- !u!50 &1358557805511632493
 Rigidbody2D:
@@ -178,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 506302737
   m_SortingLayer: 12
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 151fe5a5ee3214f85a80443ceb8d76c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,10 +168,10 @@ SpriteRenderer:
   m_Size: {x: 17.1875, y: 17.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6419830216898857974
+--- !u!114 &9031841074352715111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,20 +180,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 2174189659394345188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d179cdf7f27404742a31395a14f5be51, type: 3}
+  m_Script: {fileID: 11500000, guid: cebd526d05d854b1c9a54471270269ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 
-  characterImage: {fileID: 0}
-  playerLevel: 1
-  currentXP: 0
-  xpForNextLevel: 
-  maxHP: 0
-  currentHP: 1
-  currentMP: 0
-  MaxMP: 0
-  defense: 0
-  attack: 0
-  magic: 0
-  speed: 0
-  dexterity: 0
+  playerData:
+    playerName: Yvette
+    characterImage: {fileID: 21300000, guid: 151fe5a5ee3214f85a80443ceb8d76c3, type: 3}
+    playerLevel: 1
+    currentXP: 0
+    expToNextLevel: 
+    currentHP: 450
+    maxHP: 450
+    currentMP: 80
+    MaxMP: 80
+    attack: 35
+    defense: 55
+    magic: 70
+    magicDefense: 55
+    speed: 55
+    weaponPower: 0
+    armorPower: 0
+    friendship: 10
+    sanity: 100
+    maxSanity: 100
+  _speed: 90
+  multiplierSpeed: 1.5
+  isRunning: 0
+  sceneName: 
+  attackRate: 1

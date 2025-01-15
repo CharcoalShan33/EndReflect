@@ -4,9 +4,20 @@ using UnityEngine;
 
 
 
-[CreateAssetMenu(menuName = "Crafting/CraftingRecipes")]
+[CreateAssetMenu(fileName = "Crafting" , menuName = "Crafting Recipes")]
 public class CraftingRecipes : ScriptableObject
 {
-    
+    public ItemData itemToCraft;
+    public Costs[] allCosts;
+
 }
+
+[System.Serializable]
+public class Costs 
+{
+ public int quantity;
+
+public ItemData item;
+}
+
 

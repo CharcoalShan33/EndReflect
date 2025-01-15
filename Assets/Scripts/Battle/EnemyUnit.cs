@@ -34,11 +34,11 @@ public class EnemyUnit : MonoBehaviour
         for(int i = 0; i <allEnemies.Length; i++)
         {
 
-            if(allEnemies[i].Name == enemyName)
+            if(allEnemies[i].fighterName == enemyName)
             {
                 Enemy newEnemy = new();
 
-                newEnemy.name = allEnemies[i].Name;
+                newEnemy.name = allEnemies[i].fighterName;
                 newEnemy.LVL = allEnemies[i].LVL;
 
                 float levelModifier = Level_Modifier * newEnemy.LVL;

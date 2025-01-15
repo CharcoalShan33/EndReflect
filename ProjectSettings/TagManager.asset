@@ -7,9 +7,11 @@ TagManager:
   - Main
   - Enemy
   - Collectable
-  - EnemyUnit
-  - PlayerUnit
   - Hero
+  - HeroHitPoint
+  - EnemyHitPoint
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

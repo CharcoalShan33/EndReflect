@@ -24,35 +24,26 @@ public class UI_EquipmentSlot : UI_Slot
         switch(equipId)
         {
             case 0:
-            equipSlotType = EquipmentType.Sword;
+            equipSlotType = EquipmentType.Weapon;
             gameObject.name = equipSlotType.ToString();
 
             break;
-
-            case 1:
-            equipSlotType = EquipmentType.Bow;
-             gameObject.name = equipSlotType.ToString();
-            
-            break;
-
-            case 2: 
-            equipSlotType = EquipmentType.Staff;
-             gameObject.name = equipSlotType.ToString();
-            break;
-
-            case 3:
+             case 1:
             equipSlotType = EquipmentType.Armor;
              gameObject.name = equipSlotType.ToString();
             break;
 
-            case 4:
-            equipSlotType = EquipmentType.Scroll;
+            case 2:
+            equipSlotType = EquipmentType.AccessoryOne;
+             gameObject.name = equipSlotType.ToString();
+            
+            break;
+
+            case 3: 
+            equipSlotType = EquipmentType.AccessoryTwo;
              gameObject.name = equipSlotType.ToString();
             break;
-            case 5:
-            equipSlotType = EquipmentType.Amulet;
-             gameObject.name = equipSlotType.ToString();
-            break;
+
         }
     }
    

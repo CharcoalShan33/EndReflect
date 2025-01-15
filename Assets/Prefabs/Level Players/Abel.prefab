@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5057887979942952116}
   - component: {fileID: 5014369928901001361}
   - component: {fileID: 5562806281679837554}
-  - component: {fileID: 1800348100561860560}
   - component: {fileID: 7197797370571042944}
   - component: {fileID: -8376339180277488433}
+  - component: {fileID: 5515426260972590962}
   m_Layer: 6
   m_Name: Abel
   m_TagString: Player
@@ -109,44 +109,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1800348100561860560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174189659394345188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cebd526d05d854b1c9a54471270269ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  play:
-    playerName: 
-    characterImage: {fileID: 0}
-    playerLevel: 1
-    currentXP: 0
-    expToNextLevel: 
-    currentHP: 1
-    maxHP: 0
-    currentMP: 0
-    MaxMP: 0
-    attack: 0
-    defense: 0
-    magic: 0
-    magicDefense: 0
-    speed: 0
-    weaponPower: 0
-    armorPower: 0
-    friendship: 0
-    sanity: 0
-    maxSanity: 0
-  characterData: {fileID: 11400000, guid: 80ffa09d4627c4b9dae8eb0eddae6f6c, type: 2}
-  _speed: 90
-  multiplierSpeed: 1.5
-  isRunning: 0
-  sceneName: 
-  attackRate: 1
 --- !u!70 &7197797370571042944
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -209,3 +171,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5515426260972590962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174189659394345188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c99823a18a344bc88ffed75963269a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: Abel
+  characterImage: {fileID: 0}
+  playerLevel: 1
+  currentXP: 0
+  expToNextLevel: 
+  currentHP: 450
+  maxHP:
+    baseValue: 450
+    modifiers: 
+  currentMP: 60
+  MaxMP:
+    baseValue: 60
+    modifiers: 
+  attack:
+    baseValue: 70
+    modifiers: 
+  Attack: 0
+  Defense: 0
+  defense:
+    baseValue: 55
+    modifiers: 
+  magic:
+    baseValue: 30
+    modifiers: 
+  magicDefense:
+    baseValue: 55
+    modifiers: 
+  speed:
+    baseValue: 60
+    modifiers: 
+  isPlayer: 1
+  isDead: 0
+  weaponPower:
+    baseValue: 0
+    modifiers: 
+  armorPower:
+    baseValue: 0
+    modifiers: 
+  friendship: 0
+  sanity: 100
+  maxSanity: 100

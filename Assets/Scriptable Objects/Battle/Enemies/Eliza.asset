@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab092ffbe14e4017a6ed76a98ef4868, type: 3}
   m_Name: Eliza
   m_EditorClassIdentifier: 
-  Name: Eliza
+  fighterName: Eliza
   maxHP: 375
   HP: 375
   MP: 60

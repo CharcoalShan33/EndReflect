@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3062137499159386830}
   - component: {fileID: 2694349317516235342}
   - component: {fileID: 9027146065762861488}
-  - component: {fileID: -4510413722649388800}
+  - component: {fileID: -2664603062340741774}
   m_Layer: 7
   m_Name: Zephyr
-  m_TagString: EnemyUnit
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-4510413722649388800
+--- !u!114 &-2664603062340741774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,21 +116,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8964257914001894276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5def6d0356d41f19230eb1ab6c32b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6157a5fa0ac8741eb872f078f104ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: e58dce03b72534590a8b7adfb1f05ce9, type: 2}
-  baseEnemy:
-    name: 
-    maxHP: 0
-    HP: 1
-    MP: 0
-    maxMP: 0
-    ATK: 0
-    DEF: 0
-    INT: 0
-    RES: 0
-    SPD: 0
-    LVL: 1
-  enemiesPosition: {fileID: 0}
-  currentState: 0
+  fightStats:
+    fighterName: 
+    strength: 0
+    defense: 0
+    magicAttack: 0
+    magicDefense: 0
+    speed: 0
+    level: 0
+    healthPoints: 0
+    manaPoints: 0
+    maxHealthPoints: 0
+    maxManaPoints: 0
+    dead: 0
+    isPlayer: 0
+    delay: 0
+  battleData: {fileID: 11400000, guid: e58dce03b72534590a8b7adfb1f05ce9, type: 2}
+  attackType: 0
+  moveSpeed: 4
+  defaultSpeed: 10.5
+  availableSpells: []
+  isMagicAttack: 0
+  isRanged: 0
+  isCasting: 0

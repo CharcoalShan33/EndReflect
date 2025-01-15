@@ -9,9 +9,9 @@ using UnityEngine.InputSystem;
 
 public class LevelCharacter : MonoBehaviour 
 {
-    public PlayerInformation play;
+    //public PlayerInformation play;
 
-    public CharacterStats characterData;
+    //public Stats characterStats;
     private PlayerActions _playerInput;
 
     private Rigidbody2D rig;
@@ -69,13 +69,16 @@ public class LevelCharacter : MonoBehaviour
         _playerInput.Enable();
         Setup();
 
-      
-
-        SetStats();
+       // SetStats();
     }
 
     public void SetStats()
     {
+       
+    
+        
+        //play.speed = characterStats.GetValue()
+    /*
       play = new();
       play.armorPower = characterData.armorPower;
       play.weaponPower = characterData.weaponPower;
@@ -94,7 +97,7 @@ public class LevelCharacter : MonoBehaviour
       play.playerLevel = characterData.playerLevel;
       //play.playerName = characterData.playerName;
       //play.characterImage = characterData.characterImage;
-      
+      */
       
     }
 
@@ -128,7 +131,6 @@ public class LevelCharacter : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
         if (deactivateMove)
         {
             movement = Vector2.zero;
@@ -139,11 +141,8 @@ public class LevelCharacter : MonoBehaviour
         {
             AllMovement();
            
-
         }
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x,
-            bottomLimit.x, topLimit.x), Mathf.Clamp(transform.position.y, bottomLimit.y, topLimit.y),
-            transform.position.z);
+       
     }
 
     void FixedUpdate()
@@ -155,7 +154,18 @@ public class LevelCharacter : MonoBehaviour
     {
         rig.velocity = movement * _speed * Time.fixedDeltaTime;
     }
-    
+
+    private void LateUpdate()
+    {
+        GetCurrentBounds();
+    }
+
+    private void GetCurrentBounds()
+    {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,
+            bottomLimit.x, topLimit.x), Mathf.Clamp(transform.position.y, bottomLimit.y, topLimit.y),
+            transform.position.z);
+    }
 
     private void AllMovement()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1699270553818991562}
   - component: {fileID: 2397768363093878235}
   - component: {fileID: -6548861355528439532}
-  - component: {fileID: 6238315012503596935}
+  - component: {fileID: 286766657042967671}
   m_Layer: 7
   m_Name: Eliza
   m_TagString: Enemy
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6238315012503596935
+--- !u!114 &286766657042967671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,29 +116,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5189273084890428753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 814c4e436cdd04c50956534f107c4866, type: 3}
+  m_Script: {fileID: 11500000, guid: 6157a5fa0ac8741eb872f078f104ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetClass:
-    attackType: 0
-  enemyData: {fileID: 11400000, guid: d52f694ed829c49cb908e8103c0fd91f, type: 2}
+  data: {fileID: 11400000, guid: 2f18c4d6f93674ab2817e9db6f7ab89d, type: 2}
+  attackType: 0
+  moveSpeed: 4
+  defaultSpeed: 10.5
+  availableSpells: []
+  isMagicAttack: 0
+  isRanged: 0
+  isCasting: 0
   allSpells: []
-  baseEnemy:
-    name: 
-    maxHP: 0
-    HP: 1
-    MP: 0
-    maxMP: 0
-    ATK: 0
-    DEF: 0
-    INT: 0
-    RES: 0
-    SPD: 0
-    LVL: 1
-    isPlayer: 0
-    isDead: 0
-  playerToAttack: {fileID: 0}
-  ifAttacking: 0
-  currentState: 0
-  moveSpeed: 0
-  defaultSpeed: 10
+  projectile: {fileID: 6976766924146693794, guid: 195fd6f040f304f6f81364fbcbfe7000, type: 3}
+  shootPosition: {fileID: 1699270553818991562}

@@ -18,20 +18,20 @@ public class PlayerInformation
 
     [Header("Status Values")]   
     public  int currentHP = 1;
-    public int maxHP;
+    public Stats maxHP;
     public int currentMP;
-    public int MaxMP;   
-    public int attack;
-    public int defense;
-    public int magic;// intelligence
-    public int magicDefense;
+    public Stats MaxMP;   
+    public Stats attack;
+    public Stats defense;
+    public Stats magic;// intelligence
+    public Stats magicDefense;
  
-    public int speed; // speed
+    public Stats speed; // speed
 
     [Header("Equipment")]
 
-    public int weaponPower;
-    public int armorPower;
+    public Stats weaponPower;
+    public Stats armorPower;
 
     [Header("Sanity Meter")]
     public int friendship;
@@ -39,4 +39,7 @@ public class PlayerInformation
     public int sanity;
 
     public int maxSanity;
+
+   
+
 }

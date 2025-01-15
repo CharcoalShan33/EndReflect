@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8867793083734683522}
   - component: {fileID: 4022233999645063962}
   - component: {fileID: -6109319465486922497}
+  - component: {fileID: 6763725959524215289}
   m_Layer: 7
   m_Name: Dominic
   m_TagString: Enemy
@@ -106,3 +107,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6763725959524215289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958829020557929527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b155cfc563988452f8435de0e428d2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: a9937a277a030443382120cd24194686, type: 2}
+  attackType: 1
+  moveSpeed: 4
+  defaultSpeed: 10.5
+  availableSpells: []
+  isMagicAttack: 0
+  isRanged: 0
+  isCasting: 0
+  allSpells: []
+  projectile: {fileID: 8708863017175274288, guid: 4be40cb1036bc480986f5fbcb0c38311, type: 3}
+  shootPosition: {fileID: 8867793083734683522}

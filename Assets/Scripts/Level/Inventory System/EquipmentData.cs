@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 
 public enum EquipmentType
 {
-    Sword,
+    Weapon,
     Armor,
-    Scroll,
-    Bow,
-    Staff,
-    Amulet,
+    AccessoryOne,
+
+    AccessoryTwo
+
 
 
 }
@@ -35,6 +37,8 @@ public class EquipmentData : ItemData
     public int health;
     public int mana;
 
+    public float damageModifier;
+
     /// <summary>
     ///  add elements later
     /// </summary>
@@ -44,7 +48,7 @@ public class EquipmentData : ItemData
 
     public void AddModifiers()
     {
-        CharacterStats charStats = LevelCharacter.Instance.characterData;
+       
 
         //charStats.armorPower += defensePower;
         //charStats.weaponPower += attackPower;
@@ -57,6 +61,38 @@ public class EquipmentData : ItemData
         //charStats.MaxMP += mana;
 
 
+    }
+
+   public void Modifiers()
+    {
+        CharacterStats newStats = LevelCharacter.Instance.GetComponent<CharacterStats>();
+       // newStats.Attack += strength;
+        //newStats.Defense += defense;
+        newStats.attack.AddModifier(strength);
+        newStats.defense.AddModifier(defense);
+        //newStats.speed.AddModifier(agilitiy);
+        //newStats.magic.AddModifier(intelligence);
+       // newStats.magicDefense.AddModifier(resistance);
+       // newStats.maxHP.AddModifier(health);
+        //newStats.MaxMP.AddModifier(mana);
+        //newStats.weaponPower.AddModifier(attackPower);
+        //newStats.armorPower.AddModifier(defensePower);
+    }
+    public void RemoveModifiers()
+    {
+        CharacterStats newStats = LevelCharacter.Instance.GetComponent<CharacterStats>();
+    
+    //newStats.Attack -= strength;
+    //newStats.Defense -= defense;
+        newStats.attack.RemoveModifier(strength);
+        newStats.defense.RemoveModifier(defense);
+        //newStats.speed.RemoveModifier(agilitiy);
+        //newStats.magic.RemoveModifier(intelligence);
+        //newStats.magicDefense.RemoveModifier(resistance);
+        //newStats.maxHP.RemoveModifier(health);
+        //newStats.MaxMP.RemoveModifier(mana);
+       // newStats.weaponPower.RemoveModifier(attackPower);
+        //newStats.armorPower.RemoveModifier(defensePower);
     }
 
 }

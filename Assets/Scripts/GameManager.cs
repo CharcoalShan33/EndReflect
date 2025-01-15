@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     // manage various items, menus(open/closing, updating), conditions/win or losing, player status
     public static GameManager Instance;
-    static bool Active;
+    public  bool isActive;
 
-    CharacterStats[] players;
+    //CharacterStats[] players;
     BattleStats[] battleData;
 
     //static float enemyStatsMultiplier; // for Battle
     //static float enemyBattleLevelStats// for battle
 
-    static bool didWin;
+   public bool didWin;
    
 
-    //[SerializeField] GameObject HUD, shopMenu, craftMenu, inventoryMenu;
+    [SerializeField] bool HUDOpen;
+   // [SerializeField] bool shopMenuOpen;
+   // [SerializeField] bool craftMenuOpen;
+    [SerializeField] GameObject inventoryMenuOpen;
     // public Enum Difficulty { Easy, Medium, Hard, };
     // private Difficulty currentDifficulty
     //enum for rarity
@@ -40,53 +44,61 @@ public class GameManager : MonoBehaviour
     {
         
         DontDestroyOnLoad(gameObject);
-        players = FindObjectsOfType<CharacterStats>();
+        //battleData = FindObjectsByType<Fighters>().;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Active == true)
+        if (isActive || HUDOpen || inventoryMenuOpen )
         {
-           // PlayerController.instance.DeactivateMovement(true);
+            LevelCharacter.Instance.DeactivateMovement(true);
         }
         else
         {
-            //PlayerController.instance.DeactivateMovement(false);
+            LevelCharacter.Instance.DeactivateMovement(false);
         }
         //switch(currentDifficulty)
-    }
-    public CharacterStats[] GetPlayers()
-    {
-        return players;
-    }
 
-    public bool WinLose(bool choice)
-    {
-        didWin = choice;
+
         if(didWin)
         {
-            //gain Friendship
-            //gain Sanity Meter
-
-
+            Win();
         }
-        else
+        else if(!didWin)
         {
+            Lose();
+        }
+    }
+    public BattleStats[] GetPlayers()
+    {
+        return battleData;
+    }
+
+    public void Win()
+    {
+        didWin = true;
+       
+        //gain Friendship
+        //gain Sanity Meter
+        
+    }
+
+    public void Lose()
+    {
+        didWin = false;
         //decrease sanity meter
-        // restore healt to one
+        // restore health to one
         //  if sanity meter is zero and player is dead
         // GameOver
-        }
-        return choice;
+        
     }
-     void GameOver()
+     public  void GameOver()
     {
+       
         // show gameover screen
         // go back to main menu
         // possibly hit continue
 
     }
-
-    
 }

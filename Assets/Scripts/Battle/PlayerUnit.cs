@@ -29,11 +29,11 @@ public class PlayerUnit : MonoBehaviour
         for(int i = 0; i <allPlayers.Length; i++)
         {
 
-            if(allPlayers[i].Name == playerName)
+            if(allPlayers[i].fighterName == playerName)
             {
                 Hero newHero = new();
 
-                newHero.name = allPlayers[i].Name;
+                newHero.name = allPlayers[i].fighterName;
                 newHero.ATK = allPlayers[i].DEF;
                 newHero.DEF = allPlayers[i].ATK;
                 newHero.HP = allPlayers[i].HP;

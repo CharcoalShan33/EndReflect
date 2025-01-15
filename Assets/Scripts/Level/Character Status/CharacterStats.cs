@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Stats", menuName = "Stats/Hero")]
-public class CharacterStats : ScriptableObject
+//[CreateAssetMenu(fileName = "New Stats", menuName = "Stats/Hero")]
+public class CharacterStats: MonoBehaviour
 {
     
     [Header("Stat Information")]
@@ -19,23 +19,29 @@ public class CharacterStats : ScriptableObject
 
     [Header("Status Values")]   
     public  int currentHP = 1;
-    public int maxHP;
+    public Stats maxHP;
     public int currentMP;
-    public int MaxMP;   
-    public int attack;
-    public int defense;
-    public int magic;// intelligence
-    public int magicDefense;
- 
-    public int speed; // speed
+    public Stats MaxMP;   
 
+
+    public Stats attack;
+
+    public int Attack;
+    public int Defense;
+    public Stats defense;
+    public Stats magic;// intelligence
+    public Stats magicDefense;
+ 
+    public Stats speed; // speed
+
+    [Header("Others")]
     public bool isPlayer;
     public bool isDead;
 
     [Header("Equipment")]
 
-    public int weaponPower;
-    public int armorPower;
+    public Stats weaponPower;
+    public Stats armorPower;
 
     [Header("Sanity Meter")]
     public int friendship;
@@ -43,4 +49,30 @@ public class CharacterStats : ScriptableObject
     public int sanity;
 
     public int maxSanity;
+
+    void Start()
+    {
+        
+
+    SetValues();
+   
+
+        
+    }
+
+    public void SetValues()
+    {
+        currentHP = maxHP.GetValue();
+        currentMP = MaxMP.GetValue();
+        attack.GetValue();
+        defense.GetValue();
+        magic.GetValue();
+        magicDefense.GetValue();
+        speed.GetValue();
+        weaponPower.GetValue();
+        armorPower.GetValue();
+
+
+
+    }
 }

@@ -5,6 +5,7 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -63,65 +64,62 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventoryItem = new();
-        inventoryDictionary = new();
+        inventoryPanel.SetActive(false);
+        inventoryItem = new List<Item>();
+        inventoryDictionary = new Dictionary<ItemData, Item>();
         inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_Slot>();
 
-        materialItem = new();
-        materialDictionary = new();
+        
+        materialItem = new List<Item>();
+        materialDictionary = new Dictionary<ItemData, Item>();
         materialItemSlot = stashSlotParent.GetComponentsInChildren<UI_Slot>();
 
-        equipmentItem = new();
-       equipmentDictionary = new();
-       equipSlot = equipParent.GetComponentsInChildren<UI_EquipmentSlot>();
+        equipmentItem = new List<Item>();
+        equipmentDictionary = new Dictionary<EquipmentData, Item>();
+        equipSlot = equipParent.GetComponentsInChildren<UI_EquipmentSlot>();
+
+
+       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void EquipItem(ItemData _item)
     {
+        
         EquipmentData newEquip = _item as EquipmentData;
-        Item newItem = new(newEquip);
-
+        Item newItem = new Item(newEquip);
+    
         EquipmentData OldItem = null;
-        foreach(KeyValuePair<EquipmentData,Item> items in equipmentDictionary) // or equipmentdata in item list
+        foreach (KeyValuePair<EquipmentData, Item> items in equipmentDictionary) // or equipmentdata in item list
         {
-            if(items.Key.equipType == newEquip.equipType)
+            if (items.Key.equipType == newEquip.equipType)
             {
                 OldItem = items.Key;
             }
         }
-
-
-        if(OldItem != null)
-       {
+        if (OldItem != null)
+        {
+            UnequipItem(OldItem);
+            AddItem(OldItem);
+        }
         
-        UnequipItem(OldItem);
-        
-        AddItem(OldItem);
-        } 
+    equipmentItem.Add(newItem);
+    equipmentDictionary.Add(newEquip, newItem); // saving the data and object.
+       newEquip.Modifiers();
 
 
-        equipmentItem.Add(newItem);
-        equipmentDictionary.Add(newEquip, newItem); // saving the data and object.
         RemoveItem(_item);
         
         UpdateSlotUI();
-       //materialItemSlot[materialItemSlot.Length].OnImpact();
 
-
-        
     }
 
-   public void UnequipItem(EquipmentData RemoveItem)
+    public void UnequipItem(EquipmentData RemoveItem)
     {
-         if(equipmentDictionary.TryGetValue(RemoveItem,out Item _itemValue))
+        if (equipmentDictionary.TryGetValue(RemoveItem, out Item _itemValue))
         {
             equipmentItem.Remove(_itemValue);
             equipmentDictionary.Remove(RemoveItem);
+           RemoveItem.RemoveModifiers();
         }
     }
 
@@ -129,9 +127,7 @@ public class Inventory : MonoBehaviour
     {
         if (_item.type == ItemType.Equipment)
         {
-
             AddToInventory(_item);
-
         }
         else if (_item.type == ItemType.Resource)
         {
@@ -153,8 +149,6 @@ public class Inventory : MonoBehaviour
             Item newMaterial = new(_item); // create new item
             materialItem.Add(newMaterial); // add the item to item list
             materialDictionary.Add(_item, newMaterial); // store the value/identifier of the item
-
-
         }
     }
 
@@ -174,36 +168,36 @@ public class Inventory : MonoBehaviour
 
 
         }
-        
+
     }
 
     private void UpdateSlotUI()
     {
-        for(int i = 0; i <equipSlot.Length; i++)
+        for (int i = 0; i < equipSlot.Length; i++)
         {
             // taking each slot, comparing if the item is in the set dictionary, if so, update the value.
-        
-        foreach(KeyValuePair<EquipmentData,Item> items in equipmentDictionary) // or equipmentdata in item list
-        {
-            if(items.Key.equipType == equipSlot[i].equipSlotType)
+
+            foreach (KeyValuePair<EquipmentData, Item> items in equipmentDictionary) // or equipmentdata in item list
             {
-                equipSlot[i].UpdateSlot(items.Value);
+                if (items.Key.equipType == equipSlot[i].equipSlotType)
+                {
+                    equipSlot[i].UpdateSlot(items.Value);
+                }
             }
-        }
 
         }
 
-        for(int i = 0; i <inventoryItemSlot.Length; i++)
+        for (int i = 0; i < inventoryItemSlot.Length; i++)
         {
 
             inventoryItemSlot[i].CleanUp();
         }
-        for(int i = 0; i <materialItemSlot.Length; i++)
+        for (int i = 0; i < materialItemSlot.Length; i++)
         {
 
             materialItemSlot[i].CleanUp();
         }
-       
+
 
 
 
@@ -238,9 +232,9 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if(materialDictionary.TryGetValue(_item, out Item material))
+        if (materialDictionary.TryGetValue(_item, out Item material))
         {
-            if(material.stackAmount <= 1)
+            if (material.stackAmount <= 1)
             {
                 materialItem.Remove(material);
                 materialDictionary.Remove(_item);
@@ -249,7 +243,7 @@ public class Inventory : MonoBehaviour
             {
                 material.RemoveStack();
             }
-            
+
         }
         UpdateSlotUI();
     }

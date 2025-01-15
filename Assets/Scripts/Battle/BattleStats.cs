@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[Serializable]
+
 [CreateAssetMenu(menuName = "Battle", order = 0)]
 public class BattleStats : ScriptableObject
  {
 
     [Header("UI")]
-    public string Name;
+    public string fighterName;
    // public Sprite characterFace;
     public int maxHP;
     public  int HP = 1;

@@ -51,16 +51,27 @@ public class UI_Slot : MonoBehaviour, IPointerDownHandler
      public void OnImpact()
     {   
         if(item == null)
+            return;
+        
+    
+       
+        if(Input.GetKey(KeyCode.U))
         {
+            Inventory.instance.RemoveItem(item.data);
             return;
         }
-    
         else if (item.data.type == ItemType.Equipment)
         {
             Inventory.instance.EquipItem(item.data);
+            
         }
+
     }
 
    
-  
+    public void OnSelected()
+    {
+
+
+    }
 }

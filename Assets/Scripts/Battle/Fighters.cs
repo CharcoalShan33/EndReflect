@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class Fighters : MonoBehaviour
 {
+
    
     [Header("Other")]
     public BattleStats data;
     public enum AttackType // 
     {
-        Archer,
+        Ranged,
         
-        Magician,
+        Melee,
 
-        Warrior
+        Casting,
+
+       // MultiCast,
+
+        //MultiShot, 
+
+        //MultiHit
     }
     public AttackType attackType;
 
@@ -31,6 +38,7 @@ public class Fighters : MonoBehaviour
     private const string RETURN = "Home";
 
 
+
     public List<Spells> availableSpells; // make game object if I have to.
     private bool isRunning;
 
@@ -39,7 +47,13 @@ public class Fighters : MonoBehaviour
 
    public bool isMagicAttack;
     public bool isRanged; // archers only // can activate by critical hit
-    public bool isCasting;
+    public bool isCasting; // only activated by healing/buffing;
+
+
+   [SerializeField] List<Spells> allSpells;
+
+    [SerializeField] GameObject projectile;
+    [SerializeField] Transform shootPosition;
     
         void Start()
     {
@@ -53,16 +67,16 @@ public class Fighters : MonoBehaviour
     {
         switch(attackType)
         {
-            case AttackType.Archer:
+            case AttackType.Ranged:
             
         
             break;
 
-            case AttackType.Magician:
+            case AttackType.Casting:
             
             break;
 
-            case AttackType.Warrior:
+            case AttackType.Melee:
            
             break;
 
@@ -71,10 +85,10 @@ public class Fighters : MonoBehaviour
         }
     }
 
-    private IEnumerator Physical()
+    public IEnumerator Physical()
     {
-        attackType = AttackType.Warrior;
-        isMagicAttack = false;
+        attackType = AttackType.Melee;
+       isMagicAttack = false;
         if(actionStarted == true)
         {
             yield break;
@@ -86,27 +100,10 @@ public class Fighters : MonoBehaviour
 
 
     }
-    private IEnumerator RangedAttack()
+    public IEnumerator RangedAttack()
     {
-         attackType = AttackType.Archer;
-        isMagicAttack = false;
-        if(actionStarted == true)
-        {
-            yield break;
-        }
-
-        actionStarted = true;
-
-
-
-
-    }
-
-    private IEnumerator Casting()
-    {
-         attackType = AttackType.Magician;
-        isMagicAttack = true;
-        isCasting = true;
+         attackType = AttackType.Ranged;
+   
         if(actionStarted == true)
         {
             yield break;
@@ -119,18 +116,35 @@ public class Fighters : MonoBehaviour
 
     }
 
-    private void ShootArrow(bool noAttack)
+    public IEnumerator Casting() // movement
     {
-        isMagicAttack = noAttack;
+        attackType = AttackType.Casting;
+       isMagicAttack = true;
+        if(actionStarted == true)
+        {
+            yield break;
+        }
 
+        actionStarted = true;
+
+
+
+
+    }
+
+    public void ShootProjectile() // NoMovement
+    {
+        Instantiate(projectile, shootPosition.position, shootPosition.rotation );
         
-        if(noAttack == false) // magic
+        // magic
         {
+
             // spells go here
+            // effects and
         }
-        else
+      
         {
-            /// instantiate arrow here
+        /// instantiate arrow here
         /// archers only
         /// 
         }
@@ -141,7 +155,7 @@ public class Fighters : MonoBehaviour
 
     private IEnumerator MagicShot()
     {
-        isMagicAttack = true;
+        
          if(actionStarted == true)
         {
             yield break;

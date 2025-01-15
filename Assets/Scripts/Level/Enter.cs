@@ -11,6 +11,7 @@ public class Enter : MonoBehaviour
         if(transitionAreaName == LevelCharacter.Instance.sceneName)
         {
             LevelCharacter.Instance.transform.position = transform.position;
+            UIManager.Instance.FadeOutBlack();
         }
     }
 

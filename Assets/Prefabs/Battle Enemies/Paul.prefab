@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4142864230800221189}
   - component: {fileID: 3134353920378878894}
   - component: {fileID: -914325765087917939}
-  - component: {fileID: 5063238410469817654}
+  - component: {fileID: -6194305364886752298}
   m_Layer: 7
   m_Name: Paul
-  m_TagString: EnemyUnit
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5063238410469817654
+--- !u!114 &-6194305364886752298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,9 +116,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4390827527708089652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec526bf7d1ebc4ef1b74037c4e7d2718, type: 3}
+  m_Script: {fileID: 11500000, guid: b155cfc563988452f8435de0e428d2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 4142864230800221189}
-  targetPos: {fileID: 0}
-  player: {fileID: 0}
+  data: {fileID: 11400000, guid: bd60cdbc6c8664ba5a065fff71118fb0, type: 2}
+  attackType: 2
+  moveSpeed: 4
+  defaultSpeed: 10.5
+  availableSpells: []
+  isMagicAttack: 0
+  isRanged: 0
+  isCasting: 0
+  allSpells: []
+  projectile: {fileID: 4822445479059790548, guid: bd8af1a0e18fc415c906ae0e5c7198ba, type: 3}
+  shootPosition: {fileID: 4142864230800221189}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Ore
   description: A shiny but maleable material.
-  type: 0
+  type: 3
   icon: {fileID: 21300000, guid: 013eddc29c50c4a83abcdd95fe293003, type: 3}
-  canStack: 0
-  maxStackAmount: 0
+  canStack: 1
+  maxStackAmount: 99

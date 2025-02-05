@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7202619111927686028}
   - component: {fileID: 6475709486590936637}
   m_Layer: 5
-  m_Name: AccessoryOne
+  m_Name: Equipment slot - AccessoryOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,6 @@ MonoBehaviour:
     data: {fileID: 0}
     stackAmount: 0
   equipSlotType: 2
-  equipId: 0
 --- !u!1 &2697548724940285607
 GameObject:
   m_ObjectHideFlags: 0

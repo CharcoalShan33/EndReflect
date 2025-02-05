@@ -62,9 +62,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFXClip(int sfxClip)
     {
+        if(sfx[sfxClip].isPlaying)
+        {
+            return;
+        }
         if(sfxClip < sfx.Length)
         {
-            sfx[sfxClip].pitch = Random.Range(.75f,1.5f);
+            sfx[sfxClip].pitch = Random.Range(.05f,1.2f);
             sfx[sfxClip].Play();
         }
        // playclip at point 

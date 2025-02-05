@@ -8,8 +8,8 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
-    [SerializeField] GameObject[] characters;
-    [SerializeField] List<GameObject> enemies;
+    public GameObject[] characters;
+    public List<GameObject> enemies;
     [SerializeField] Transform[] playerPositions;
     [SerializeField] Transform[] enemyPositions;
 
@@ -65,7 +65,7 @@ public class Spawner : MonoBehaviour
     public IEnumerator OneAtATimeForEnemies()
     {
         yield return  waitFor;
-        for( int i = 0; i< characters.Length;  i++)
+        for( int i = 0; i< enemies.Count;  i++)
         {
 
             Instantiate(enemies[i].gameObject, enemyPositions[i].position + offset, quaternion.identity);

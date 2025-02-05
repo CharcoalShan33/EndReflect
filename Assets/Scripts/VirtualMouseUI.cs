@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.UI;
 
-public class VirtualMouseScript : MonoBehaviour
+public class VirtualMouseUI : MonoBehaviour
 {
    
    private VirtualMouseInput virtualMouseInput;
@@ -21,7 +21,7 @@ public class VirtualMouseScript : MonoBehaviour
    }
    private  void LateUpdate()
    {
-     Vector2 vMousePosition = virtualMouseInput.virtualMouse.position.value;
+     Vector2 vMousePosition = virtualMouseInput.virtualMouse.position.ReadValue();
      vMousePosition.x = Mathf.Clamp(vMousePosition.x, 0f, Screen.width);
      vMousePosition.y = Mathf.Clamp(vMousePosition.y, 0f, Screen.height);
      InputState.Change(virtualMouseInput.virtualMouse.position, vMousePosition);

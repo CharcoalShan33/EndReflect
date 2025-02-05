@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5806868371531075744}
   - component: {fileID: 412507029898116692}
   - component: {fileID: 2627647439749437319}
+  - component: {fileID: -6050200143089509206}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -124,4 +125,39 @@ MonoBehaviour:
   mpCost: 10
   isFlipped: 0
   currentSpellType: 0
-  speed: 1
+  speed: 3.54
+--- !u!58 &-6050200143089509206
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586794585072927183}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64

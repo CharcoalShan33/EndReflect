@@ -2,16 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 
+
 public class LevelCharacter : MonoBehaviour 
 {
+    public PlayerStats play;
     //public PlayerInformation play;
-
-    //public Stats characterStats;
     private PlayerActions _playerInput;
 
     private Rigidbody2D rig;
@@ -45,6 +46,8 @@ public class LevelCharacter : MonoBehaviour
 
     private float lastAttack;
 
+    private Vector3 playerPosition;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -69,38 +72,13 @@ public class LevelCharacter : MonoBehaviour
         _playerInput.Enable();
         Setup();
 
-       // SetStats();
-    }
-
-    public void SetStats()
-    {
-       
-    
         
-        //play.speed = characterStats.GetValue()
-    /*
-      play = new();
-      play.armorPower = characterData.armorPower;
-      play.weaponPower = characterData.weaponPower;
-      play.currentHP = characterData.currentHP;
-      play.maxHP = characterData.maxHP;
-      play.currentMP = characterData.currentMP;
-      play.MaxMP = characterData.MaxMP;
-      play.attack = characterData.attack;
-      play.defense = characterData.defense;
-      play.magic = characterData.magic;
-      play.magicDefense = characterData.magicDefense;
-      play.speed = characterData.speed;
-      play.sanity = characterData.sanity;
-      play.maxSanity = characterData.maxSanity;
-      play.friendship = characterData.friendship;
-      play.playerLevel = characterData.playerLevel;
-      //play.playerName = characterData.playerName;
-      //play.characterImage = characterData.characterImage;
-      */
+        playerPosition = transform.position;
+
       
     }
 
+   
     private void Setup()
     {
         // if the context/key pressed will equal or not equal to true;
@@ -109,10 +87,13 @@ public class LevelCharacter : MonoBehaviour
         _playerInput.MainPlayer.Run.canceled += ctx => isRunning = false;
         _playerInput.MainPlayer.Interaction.performed += OnInteract;
         _playerInput.MainPlayer.Attack.performed += OnAttack;
+       
     }
 
+   
+
     // Update is called once per frame
-     void OnAttack(InputAction.CallbackContext context)
+    void OnAttack(InputAction.CallbackContext context)
     {
         if (Time.time - lastAttack > attackRate)
         {
@@ -233,7 +214,15 @@ public class LevelCharacter : MonoBehaviour
 
 
     
+    public void SetPosition(Vector3 position)
+    {
+        playerPosition = position;
+    }
 
+    public Vector3 GetPosition()
+    {
+        return playerPosition;
+    }
 
 
 }

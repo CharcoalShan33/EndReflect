@@ -43,19 +43,42 @@ public class UI_Slot : MonoBehaviour, IPointerDownHandler
 
 
     }
- public void OnPointerDown(PointerEventData eventData)
+
+
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
-        OnImpact();
+          if (item == null)
+            return;
+        if (Input.GetKey(KeyCode.U))
+        {
+            Inventory.instance.RemoveItem(item.data);
+            return;
+        }
+
+        else if (item.data.type == ItemType.Equipment)
+            Inventory.instance.EquipItem(item.data);
     }
 
-     public void OnImpact()
-    {   
-        if(item == null)
-            return;
-        
+    //void OnPointerDown(PointerEventData eventData)
     
-       
-        if(Input.GetKey(KeyCode.U))
+
+
+
+
+
+
+
+        //OnImpact();
+    
+
+    void OnImpact()
+    {
+        if (item == null)
+            return;
+
+
+
+        if (Input.GetKey(KeyCode.U))
         {
             Inventory.instance.RemoveItem(item.data);
             return;
@@ -63,12 +86,12 @@ public class UI_Slot : MonoBehaviour, IPointerDownHandler
         else if (item.data.type == ItemType.Equipment)
         {
             Inventory.instance.EquipItem(item.data);
-            
+
         }
 
     }
 
-   
+
     public void OnSelected()
     {
 

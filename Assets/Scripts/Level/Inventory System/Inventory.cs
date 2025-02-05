@@ -42,14 +42,13 @@ public class Inventory : MonoBehaviour
 
     private UI_EquipmentSlot[] equipSlot;
 
-    private int materialIndex;
-    private int inventoryIndex;
-    private int equipIndex;
-
+   
     [SerializeField] Transform dropPosition;
     public TextMeshProUGUI selectItemName, selectedItemDescription;
     public GameObject useButton, discardButton, equipButton, unequipButton;
 
+    [Range(1,4)]
+    private int equipNum;
     [SerializeField] GameObject inventoryPanel;
     // remove items, drop position.
 
@@ -104,7 +103,7 @@ public class Inventory : MonoBehaviour
         
     equipmentItem.Add(newItem);
     equipmentDictionary.Add(newEquip, newItem); // saving the data and object.
-       newEquip.Modifiers();
+      
 
 
         RemoveItem(_item);
@@ -119,7 +118,7 @@ public class Inventory : MonoBehaviour
         {
             equipmentItem.Remove(_itemValue);
             equipmentDictionary.Remove(RemoveItem);
-           RemoveItem.RemoveModifiers();
+         
         }
     }
 
@@ -246,5 +245,9 @@ public class Inventory : MonoBehaviour
 
         }
         UpdateSlotUI();
+
+        
     }
+
+    
 }

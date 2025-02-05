@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 590752338639400418}
   - component: {fileID: 1260645312295299689}
   - component: {fileID: -477546388744277060}
+  - component: {fileID: 434205339498104255}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Untagged
@@ -120,8 +121,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Iceball
-  power: 30
-  mpCost: 15
+  power: 10
+  mpCost: 10
   isFlipped: 0
   currentSpellType: 0
-  speed: 1
+  speed: 3.54
+--- !u!58 &434205339498104255
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498418705788517312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.64

@@ -487,13 +487,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Point",
-                    "type": "PassThrough",
-                    "id": "047c0961-2c52-4956-8203-644f56075cc4",
-                    "expectedControlType": "Vector2",
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "39bbb909-82ac-4234-ae94-9acc475ed2bd",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Open Menu",
@@ -505,6 +505,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "047c0961-2c52-4956-8203-644f56075cc4",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Click",
                     "type": "PassThrough",
                     "id": "80c8efe4-8ef0-4471-aba4-7ed4eafd7dfe",
@@ -512,15 +521,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "39bbb909-82ac-4234-ae94-9acc475ed2bd",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "RightClick",

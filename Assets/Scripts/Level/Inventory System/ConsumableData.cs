@@ -11,7 +11,7 @@ public class ConsumableData : ItemData
     public enum ItemEffect
 {
     Healing, // for mp and hp, stamina
-    Increasing, // upgrading stats
+    Restoring, // upgrading stats
 
     Revive
 }

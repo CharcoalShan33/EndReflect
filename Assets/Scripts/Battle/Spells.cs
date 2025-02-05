@@ -16,39 +16,48 @@ public class Spells : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField] private float speed;
 
+    private BattleMachine BSM;
+
+
+    private  void Start()
+    {
+    // BSM = GameObject.Find("Batlle_System").GetComponent<BattleMachine>();
+    }
     private void Update()
     {
         //AudioManager.Instance.PlaySFXClip(0);
         if (targetPosition != Vector3.zero)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, targetPosition) < .2f)
+            if (Vector3.Distance(transform.position, targetPosition) < .25f)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject, 1.5f);
             }
-
-
         }
         else
         {
             Destroy(gameObject);
         }
+
     
     }
 
-    public void CastSpell(GameObject target)
+    public void CastSpell(Fighters target)
     {
         targetPosition = target.transform.position;
         if (currentSpellType == SpellType.Attack)
         {
-            //target.DealDamage(power);
+          target.TakeDamage(power);
             Debug.Log("Hit Target");
         }
         if (currentSpellType == SpellType.Healing)
         {
+            target.Healing(power);
             Debug.Log("HealTarget");
             //target.HealHP(power);
         }
     }
+
+   
 
 }

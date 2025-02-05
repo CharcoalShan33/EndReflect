@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab092ffbe14e4017a6ed76a98ef4868, type: 3}
   m_Name: Cleaner
   m_EditorClassIdentifier: 
-  Name: Cleaner
+  fighterName: 
   maxHP: 410
   HP: 410
   MP: 70
@@ -25,3 +25,6 @@ MonoBehaviour:
   LVL: 1
   isPlayer: 1
   isDead: 0
+  tagType: Hero
+  attackType: 0
+  build: 3

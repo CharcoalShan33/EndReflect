@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2878671908046158637}
   - component: {fileID: 2516624235956593364}
   m_Layer: 5
-  m_Name: AccessoryTwo
+  m_Name: Equipment slot - AccessoryTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,6 @@ MonoBehaviour:
     data: {fileID: 0}
     stackAmount: 0
   equipSlotType: 3
-  equipId: 0
 --- !u!1 &7840419214082613460
 GameObject:
   m_ObjectHideFlags: 0

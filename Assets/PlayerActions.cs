@@ -509,13 +509,13 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Point"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""047c0961-2c52-4956-8203-644f56075cc4"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""39bbb909-82ac-4234-ae94-9acc475ed2bd"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Open Menu"",
@@ -527,6 +527,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Point"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""047c0961-2c52-4956-8203-644f56075cc4"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Click"",
                     ""type"": ""PassThrough"",
                     ""id"": ""80c8efe4-8ef0-4471-aba4-7ed4eafd7dfe"",
@@ -534,15 +543,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""39bbb909-82ac-4234-ae94-9acc475ed2bd"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""RightClick"",
@@ -1210,10 +1210,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
-        m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
-        m_UI_OpenMenu = m_UI.FindAction("Open Menu", throwIfNotFound: true);
-        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_OpenMenu = m_UI.FindAction("Open Menu", throwIfNotFound: true);
+        m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
+        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
@@ -1463,10 +1463,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Cancel;
     private readonly InputAction m_UI_Navigate;
-    private readonly InputAction m_UI_Point;
-    private readonly InputAction m_UI_OpenMenu;
-    private readonly InputAction m_UI_Click;
     private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_OpenMenu;
+    private readonly InputAction m_UI_Point;
+    private readonly InputAction m_UI_Click;
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_MiddleClick;
     private readonly InputAction m_UI_ScrollWheel;
@@ -1480,10 +1480,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
-        public InputAction @Point => m_Wrapper.m_UI_Point;
-        public InputAction @OpenMenu => m_Wrapper.m_UI_OpenMenu;
-        public InputAction @Click => m_Wrapper.m_UI_Click;
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputAction @OpenMenu => m_Wrapper.m_UI_OpenMenu;
+        public InputAction @Point => m_Wrapper.m_UI_Point;
+        public InputAction @Click => m_Wrapper.m_UI_Click;
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
@@ -1508,18 +1508,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
-            @Point.started += instance.OnPoint;
-            @Point.performed += instance.OnPoint;
-            @Point.canceled += instance.OnPoint;
-            @OpenMenu.started += instance.OnOpenMenu;
-            @OpenMenu.performed += instance.OnOpenMenu;
-            @OpenMenu.canceled += instance.OnOpenMenu;
-            @Click.started += instance.OnClick;
-            @Click.performed += instance.OnClick;
-            @Click.canceled += instance.OnClick;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @OpenMenu.started += instance.OnOpenMenu;
+            @OpenMenu.performed += instance.OnOpenMenu;
+            @OpenMenu.canceled += instance.OnOpenMenu;
+            @Point.started += instance.OnPoint;
+            @Point.performed += instance.OnPoint;
+            @Point.canceled += instance.OnPoint;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
             @RightClick.started += instance.OnRightClick;
             @RightClick.performed += instance.OnRightClick;
             @RightClick.canceled += instance.OnRightClick;
@@ -1551,18 +1551,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
             @Navigate.canceled -= instance.OnNavigate;
-            @Point.started -= instance.OnPoint;
-            @Point.performed -= instance.OnPoint;
-            @Point.canceled -= instance.OnPoint;
-            @OpenMenu.started -= instance.OnOpenMenu;
-            @OpenMenu.performed -= instance.OnOpenMenu;
-            @OpenMenu.canceled -= instance.OnOpenMenu;
-            @Click.started -= instance.OnClick;
-            @Click.performed -= instance.OnClick;
-            @Click.canceled -= instance.OnClick;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @OpenMenu.started -= instance.OnOpenMenu;
+            @OpenMenu.performed -= instance.OnOpenMenu;
+            @OpenMenu.canceled -= instance.OnOpenMenu;
+            @Point.started -= instance.OnPoint;
+            @Point.performed -= instance.OnPoint;
+            @Point.canceled -= instance.OnPoint;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
             @RightClick.started -= instance.OnRightClick;
             @RightClick.performed -= instance.OnRightClick;
             @RightClick.canceled -= instance.OnRightClick;
@@ -1639,10 +1639,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
-        void OnPoint(InputAction.CallbackContext context);
-        void OnOpenMenu(InputAction.CallbackContext context);
-        void OnClick(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnOpenMenu(InputAction.CallbackContext context);
+        void OnPoint(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnScrollWheel(InputAction.CallbackContext context);

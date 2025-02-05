@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject storyPanel;
+    [SerializeField] GameObject dialoguePanel;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] Image npcIcon;
+
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI dialogueText;
+
+    public static DialogueManager instance;
+
+    
+
+    private void Awake() 
     {
-        
+        if(instance != this && instance != null)
+        {
+            Destroy(gameObject);
+
+        }
+        else 
+        {
+            instance = this;
+        }
     }
 }

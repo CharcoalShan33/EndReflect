@@ -25,3 +25,6 @@ MonoBehaviour:
   LVL: 1
   isPlayer: 1
   isDead: 0
+  tagType: Hero
+  attackType: 1
+  build: 3

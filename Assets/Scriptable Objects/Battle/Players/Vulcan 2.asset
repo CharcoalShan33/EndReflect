@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab092ffbe14e4017a6ed76a98ef4868, type: 3}
   m_Name: Vulcan 2
   m_EditorClassIdentifier: 
-  Name: Vulcan
+  fighterName: 
   maxHP: 395
   HP: 395
   MP: 90
@@ -23,5 +23,8 @@ MonoBehaviour:
   RES: 65
   SPD: 45
   LVL: 1
-  isPlayer: 1
+  isPlayer: 0
   isDead: 0
+  tagType: Hero
+  attackType: 2
+  build: 3

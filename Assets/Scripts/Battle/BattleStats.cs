@@ -1,19 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 
 [CreateAssetMenu(menuName = "Battle", order = 0)]
 public class BattleStats : ScriptableObject
- {
+{
 
     [Header("UI")]
     public string fighterName;
-   // public Sprite characterFace;
+    // public Sprite characterFace;
     public int maxHP;
-    public  int HP = 1;
+    public int HP = 1;
     public int MP = 0;
     public int maxMP;
 
@@ -31,12 +32,37 @@ public class BattleStats : ScriptableObject
     public bool isPlayer;
     public bool isDead;
 
+    public string tagType;
 
 
+    public enum AttackType // 
+    {
+        Ranged,
+
+        Melee,
+
+        Casting,
+    }
+    public AttackType attackType;
+
+    public enum BuildType
+    {
+        Humanoid, // Humans
+        Flying,
+        Undead,
+        Humans
+        // type of enemies for now
+    }
+
+    public BuildType build;
+
+
+   
+
+   
+    
     
 
 
-
-
-    
 }
+

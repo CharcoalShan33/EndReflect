@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 33449962061747119}
   - component: {fileID: 6151447375137832075}
   m_Layer: 5
-  m_Name: Armor
+  m_Name: Equipment slot - Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,6 @@ MonoBehaviour:
     data: {fileID: 0}
     stackAmount: 0
   equipSlotType: 1
-  equipId: 0
 --- !u!1 &8641827687233796231
 GameObject:
   m_ObjectHideFlags: 0

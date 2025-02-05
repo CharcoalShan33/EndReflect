@@ -45,35 +45,29 @@ public class EquipmentData : ItemData
 
 
 
+    public void Start()
+    {
+        
+    }
+
 
     public void AddModifiers()
     {
-       
-
-        //charStats.armorPower += defensePower;
-        //charStats.weaponPower += attackPower;
-        //charStats.defense += defense;
-        //charStats.speed += agilitiy;
-        //charStats.attack += strength;
-        //charStats.magic += intelligence;
-        //charStats.magicDefense = resistance;
-        //charStats.maxHP += health;
-        //charStats.MaxMP += mana;
 
 
     }
 
-   public void Modifiers()
+    public void Modifiers()
     {
         CharacterStats newStats = LevelCharacter.Instance.GetComponent<CharacterStats>();
-       // newStats.Attack += strength;
+        // newStats.Attack += strength;
         //newStats.Defense += defense;
-        newStats.attack.AddModifier(strength);
+        newStats.attack.AddModifier(strength + attackPower);
         newStats.defense.AddModifier(defense);
         //newStats.speed.AddModifier(agilitiy);
         //newStats.magic.AddModifier(intelligence);
-       // newStats.magicDefense.AddModifier(resistance);
-       // newStats.maxHP.AddModifier(health);
+        // newStats.magicDefense.AddModifier(resistance);
+        // newStats.maxHP.AddModifier(health);
         //newStats.MaxMP.AddModifier(mana);
         //newStats.weaponPower.AddModifier(attackPower);
         //newStats.armorPower.AddModifier(defensePower);
@@ -81,17 +75,17 @@ public class EquipmentData : ItemData
     public void RemoveModifiers()
     {
         CharacterStats newStats = LevelCharacter.Instance.GetComponent<CharacterStats>();
-    
-    //newStats.Attack -= strength;
-    //newStats.Defense -= defense;
-        newStats.attack.RemoveModifier(strength);
+
+        //newStats.Attack -= strength;
+        //newStats.Defense -= defense;
+        newStats.attack.RemoveModifier(strength - attackPower);
         newStats.defense.RemoveModifier(defense);
         //newStats.speed.RemoveModifier(agilitiy);
         //newStats.magic.RemoveModifier(intelligence);
         //newStats.magicDefense.RemoveModifier(resistance);
         //newStats.maxHP.RemoveModifier(health);
         //newStats.MaxMP.RemoveModifier(mana);
-       // newStats.weaponPower.RemoveModifier(attackPower);
+        // newStats.weaponPower.RemoveModifier(attackPower);
         //newStats.armorPower.RemoveModifier(defensePower);
     }
 

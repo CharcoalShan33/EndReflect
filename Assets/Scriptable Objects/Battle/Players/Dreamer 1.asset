@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab092ffbe14e4017a6ed76a98ef4868, type: 3}
   m_Name: Dreamer 1
   m_EditorClassIdentifier: 
-  Name: Dreamer
+  fighterName: 
   maxHP: 400
   HP: 400
   MP: 90
@@ -25,3 +25,6 @@ MonoBehaviour:
   LVL: 1
   isPlayer: 1
   isDead: 0
+  tagType: Hero
+  attackType: 2
+  build: 3

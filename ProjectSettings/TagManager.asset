@@ -12,6 +12,7 @@ TagManager:
   - EnemyHitPoint
   - PlayerProjectile
   - EnemyProjectile
+  - Shaker
   layers:
   - Default
   - TransparentFX

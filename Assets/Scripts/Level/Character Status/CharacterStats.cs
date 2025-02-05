@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //[CreateAssetMenu(fileName = "New Stats", menuName = "Stats/Hero")]
@@ -15,6 +16,8 @@ public class CharacterStats: MonoBehaviour
     public int currentXP;
     public int[] expToNextLevel;
     private int maxLevel = 100;
+
+    public int baseXP =100;
 
 
     [Header("Status Values")]   
@@ -55,24 +58,46 @@ public class CharacterStats: MonoBehaviour
         
 
     SetValues();
-   
 
+    expToNextLevel = new int[maxLevel];
+   
+    expToNextLevel[1] = baseXP;
+
+    for(int i = 2; i< expToNextLevel.Length; i++)
+    {
+        expToNextLevel[i]  = (int)(0.04 * (i ^ 3) + 0.8 * (i ^ 2) + 2 * i);
+    }
         
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.B))
+        {
+            AddExp(100);
+        }
     }
 
     public void SetValues()
     {
+        attack.SetDefaultValue(70);
+        defense.SetDefaultValue(55);
+        maxHP.SetDefaultValue(450);
         currentHP = maxHP.GetValue();
-        currentMP = MaxMP.GetValue();
-        attack.GetValue();
-        defense.GetValue();
-        magic.GetValue();
-        magicDefense.GetValue();
-        speed.GetValue();
-        weaponPower.GetValue();
-        armorPower.GetValue();
 
-
-
+    
     }
+
+    public void AddExp(int amount)
+    {
+        currentXP += amount;
+        if(currentXP > expToNextLevel[playerLevel])
+        {
+            currentXP -= expToNextLevel[playerLevel];
+            playerLevel++;
+
+        }
+    }
+
+   
 }

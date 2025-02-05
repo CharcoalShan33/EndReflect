@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +13,13 @@ public class GameManager : MonoBehaviour
     public  bool isActive;
 
     //CharacterStats[] players;
-    BattleStats[] battleData;
+    [SerializeField] PlayerStats[] playerStats;
 
+    LevelCharacter activeCharacter;
+
+
+    [SerializeField] GameObject levelPanel;
+    
     //static float enemyStatsMultiplier; // for Battle
     //static float enemyBattleLevelStats// for battle
 
@@ -21,11 +29,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool HUDOpen;
    // [SerializeField] bool shopMenuOpen;
    // [SerializeField] bool craftMenuOpen;
-    [SerializeField] GameObject inventoryMenuOpen;
+    [SerializeField] bool inventoryMenuOpen;
     // public Enum Difficulty { Easy, Medium, Hard, };
     // private Difficulty currentDifficulty
     //enum for rarity
     // private int currentSanity // battle boost, rarer drops
+
+    [SerializeField] bool menuOpen;
+
+    [Header("Exp Window")]
+    [SerializeField] int giveXP;
+    [SerializeField] TextMeshProUGUI xpText;
+    [SerializeField] TextMeshProUGUI itemText;
+    [SerializeField] GameObject window;
+
+   [ SerializeField] ConsumableData[] itemsToGet;
+   // [[SerializeField]
+
 
     void Awake()
     {
@@ -44,13 +64,16 @@ public class GameManager : MonoBehaviour
     {
         
         DontDestroyOnLoad(gameObject);
-        //battleData = FindObjectsByType<Fighters>().;
+        activeCharacter = FindObjectOfType<LevelCharacter>();
+      
+        playerStats = FindObjectsOfType<PlayerStats>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isActive || HUDOpen || inventoryMenuOpen )
+        if (isActive || menuOpen)
         {
             LevelCharacter.Instance.DeactivateMovement(true);
         }
@@ -65,18 +88,19 @@ public class GameManager : MonoBehaviour
         {
             Win();
         }
-        else if(!didWin)
+        else
         {
             Lose();
         }
     }
-    public BattleStats[] GetPlayers()
+    public PlayerStats[] GetPlayers()
     {
-        return battleData;
+        return playerStats;
     }
 
-    public void Win()
+    private void Win()
     {
+
         didWin = true;
        
         //gain Friendship
@@ -84,21 +108,76 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void Lose()
+    private void Lose()
     {
         didWin = false;
         //decrease sanity meter
         // restore health to one
         //  if sanity meter is zero and player is dead
         // GameOver
+
         
     }
-     public  void GameOver()
+   public void GameOver()
     {
-       
+       UIManager.Instance.FadeInBlack();
+
+
+
         // show gameover screen
         // go back to main menu
         // possibly hit continue
 
     }
+
+    public void LevelUp()
+    {
+        levelPanel.SetActive(true);
+    }
+
+    public void AddExp(int amount)
+    {
+
+    }
+
+    public void OpenRewardsScreen(int xpEarned, ConsumableData[] recieveItems )
+    {
+
+
+        giveXP = xpEarned;
+        itemsToGet = recieveItems;
+        xpText.text = string.Empty;
+
+
+        foreach(ConsumableData rewardItems in itemsToGet)
+        {
+
+            itemText.text += rewardItems;
+
+        }
+    window.SetActive(true);
+
+    }
+
+    public void CloseBattleRewardsMenu()
+    {
+
+        foreach(PlayerStats activePlayer in GetPlayers())
+        {
+
+            if(activePlayer.gameObject.activeInHierarchy)
+            {
+                AddExp(giveXP);
+            }
+        }
+    foreach(ConsumableData items in itemsToGet)
+        {
+            Inventory.instance.AddItem(items);
+        }
+
+        window.SetActive(false);
+        isActive = false;
+    }
+
+
 }
